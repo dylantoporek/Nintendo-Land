@@ -9,29 +9,23 @@ function SignUpForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(username)
-    console.log(password)
-    console.log(passwordConfirmation)
     setErrors([]);
     setIsLoading(true);
     fetch("http://localhost:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '<origin>',
       },
       body: JSON.stringify({
         username,
         password,
-        password_confirmation: passwordConfirmation
+        passwordConfirmation
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
+      } 
     });
   }
 
