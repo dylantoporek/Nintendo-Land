@@ -1,53 +1,70 @@
 import React, {useState} from "react";
 
-function GameForm(){
-    const [playerAvatar, setPlayerAvatar] = useState("")
-    const [cpu1Avatar, setCpu1Avatar] = useState("")
-    const [cpu2Avatar, setCpu2Avatar] = useState("")
-    const [cpu3Avatar, setCpu3Avatar] = useState("")
-    const [playerPostion, setPlayerPosition] = useState(0)
+function GameForm({setTogNewGame}){
+    const [playerAvatar, setPlayerAvatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png")
+    const [cpu1Avatar, setCpu1Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png")
+    const [cpu2Avatar, setCpu2Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png")
+    const [cpu3Avatar, setCpu3Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png")
+    const [playerPosition, setPlayerPosition] = useState(0)
     const [cpu1Position, setCpu1Position] = useState(0)
     const [cpu2Position, setCpu2Position] = useState(0)
     const [cpu3Position, setCpu3Position] = useState(0)
+    const [errors, setErrors]= useState([])
     
     function handlePChange(e){
         setPlayerAvatar(e.target.value)
     }
 
-    function handlePSubmit(e){
+    function handleSubmit(e){
         e.preventDefault()
         console.log(playerAvatar)
+        console.log(cpu1Avatar)
+        console.log(cpu2Avatar)
+        console.log(cpu3Avatar)
     }
 
     function handleC1Change(e){
         setCpu1Avatar(e.target.value)
     }
 
-    function handleC1Submit(e){
-        e.preventDefault()
-        console.log(cpu1Avatar)
-    }
 
     function handleC2Change(e){
         setCpu2Avatar(e.target.value)
-    }
-
-    function handleC2Submit(e){
-        e.preventDefault()
-        console.log(cpu2Avatar)
     }
 
     function handleC3Change(e){
         setCpu3Avatar(e.target.value)
     }
 
-    function handleC3Submit(e){
-        e.preventDefault()
-        console.log(cpu3Avatar)
+
+    function newGameStart(){
+       let newGameObj = {
+            player_avatar: playerAvatar,
+            player_position: playerPosition,
+            cpu1_avatar: cpu1Avatar,
+            cpu1_position: cpu1Position,
+            cpu2_avatar: cpu2Avatar,
+            cpu2_position: cpu2Position,
+            cpu3_avatar: cpu3Avatar,
+            cpu3_position: cpu3Position
+        }
+        fetch('http://localhost:3000/games',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({newGameObj}),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((game) => console.log(game));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
     }
     return(
         <div>
-            <form onSubmit={handlePSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label>Pick Your Character</label>
                 <select value={playerAvatar} onChange={handlePChange}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png">Mario</option>
@@ -59,30 +76,27 @@ function GameForm(){
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00080000-00030002.png">DK</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00090000-000d0002.png">Diddy Kong</option>
                 </select>
-                <button>Submit</button>
-            </form>
+               
 
-            <form onSubmit={handleC1Submit}>
+            
                 <label>Pick Cpu1 Character</label>
                 <select value={cpu1Avatar} onChange={handleC1Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png">Luigi</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00140000-02670102.png">Waluigi</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00070000-001a0002.png">Wario</option>
                 </select>
-                <button>Submit</button>
-            </form>
 
-            <form onSubmit={handleC2Submit}>
+
                 <label>Pick Cpu2 Character</label>
                 <select value={cpu2Avatar} onChange={handleC2Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png">Ganondorf</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01400000-03550902.png">Guardian</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01410000-035c0902.png">Bokoblin</option>
                 </select>
-                <button>Submit</button>
-            </form>
 
-            <form onSubmit={handleC3Submit}>
+  
+
+
                 <label>Pick Cpu3 Character</label>
                 <select value={cpu3Avatar} onChange={handleC3Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png">Charizard</option>
@@ -91,6 +105,16 @@ function GameForm(){
                 </select>
                 <button>Submit</button>
             </form>
+
+            <button onClick={newGameStart}>Start New Game</button>
+
+            <button onClick={()=> setTogNewGame(false)}>Back to Home</button>
+
+            <div>
+            {errors.map((err) => (
+              <p key={err}>{err}</p>
+            ))}
+            </div>
         </div>
     )
 }
