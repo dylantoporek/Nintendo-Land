@@ -1,8 +1,12 @@
 import React from "react";
+import GameForm from '../GameForm'
 
 function Home(){
     return(
-        <div>Hi From Home</div>
+        <div>
+            <GameForm/>
+        </div>
+        
     )
 }
 
