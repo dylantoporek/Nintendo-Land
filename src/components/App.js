@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Route, Routes} from 'react-router-dom';
 import Login from '../components/pages/Login'
+import NavBar from "./NavBar";
+import Game from "./pages/Game";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -14,11 +18,29 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user){
+    return <Login onLogin={setUser} />;
+  } 
+  else {
+    return (
+      <div>
+        <NavBar/>
+        <Routes>
+          <Route 
+            path="/game" 
+            element={<Game/>}>
+          </Route>
+          <Route 
+            path="/" 
+            element={<Home/>}>
+          </Route>
+        </Routes>
 
-  return (
-      <div>You Are Logged In!</div>
+      </div>
   );
+  }
+
+  
 }
 
 export default App;
