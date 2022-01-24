@@ -161,11 +161,41 @@
 
 /* Space 4 /////////////////////////////////////////////////////////////////////////// */
 
-.space-4{
+.space-player-4{
   position: absolute;
-  background-color: orange;
   width: 50px;
   height: 50px;
-  top: 500px;
-  left: 1000px;
+  top: 580px;
+  left: 210px;
+  z-index: 10;
 }
+
+.space-cpu1-4{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 280px;
+  z-index: 10;
+}
+
+.space-cpu2-4{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 210px;
+  z-index: 10;
+}
+
+.space-cpu3-4{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 270px;
+  z-index: 10;
+}
+
+/* Space 5 ///////////////////////////////////////////////// */
+
