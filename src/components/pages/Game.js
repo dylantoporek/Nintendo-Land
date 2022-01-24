@@ -1,32 +1,69 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './App.css'
 import board from '../pages/Board.png'
+import {useNavigate} from 'react-router-dom'
 
-function Game(){
-    
+function Game({game}){
     const [player, setPlayer] = useState({
         name: "player",
-        avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png",
+        avatar: "",
         position: 0
     })
 
     const [cpu1, setCpu1] = useState({
         name: "cpu1",
-        avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png",
+        avatar: "",
         position: 0
     })
-    
+
     const [cpu2, setCpu2] = useState({
         name: "cpu2",
-        avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png",
+        avatar: "",
         position: 0
     })
 
     const [cpu3, setCpu3] = useState({
         name: "cpu3",
-        avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png",
+        avatar: "",
         position: 0
     })
+
+    const navigate = useNavigate()
+
+useEffect(()=>{
+    if (game){
+        console.log(game.player_avater)
+        setPlayer({
+            name: "player",
+            avatar: game.player_avatar,
+            position: game.player_position
+        })
+    
+        setCpu1({
+            name: "cpu1",
+            avatar: game.cpu1_avatar,
+            position: game.cpu1_position
+        })
+        
+        setCpu2({
+            name: "cpu2",
+            avatar: game.cpu2_avatar,
+            position: game.cpu2_position
+        })
+    
+        setCpu3({
+            name: "cpu3",
+            avatar: game.cpu3_avatar,
+            position: game.cpu3_position
+        })
+    } else {
+        alert('You must create a new game or load an existing game to play.')
+        navigate('/')
+    }
+}, [])
+    
+    
+    console.log(player, cpu1, cpu2, cpu3)
 
     const activePlayers = [
         player, cpu1, cpu2, cpu3
@@ -41,61 +78,56 @@ function Game(){
 
     function handleRoll(){
        
-        playerRoll()
-        cpu1Roll()
-        cpu2Roll()
-        cpu3Roll()
+        setTimeout(playerRoll, 1000)
+        setTimeout(cpu1Roll, 2000)
+        setTimeout(cpu2Roll, 3000)
+        setTimeout(cpu3Roll, 4000)
         
     }
 
     function playerRoll(){
         let dice = [1, 2, 3, 4, 5, 6]
-        let playerRoll = dice[Math.floor(Math.random()*3)]
+        let playerRoll = dice[Math.floor(Math.random()*6)]
         let playerMove = player.position + playerRoll
         setPlayer({
-            name: "player",
-            avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png",
+            ...player, 
             position: playerMove
-
         })
     }
 
     function cpu1Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
-        let cpu1Roll = dice[Math.floor(Math.random()*3)]
+        let cpu1Roll = dice[Math.floor(Math.random()*6)]
         let cpu1Move = cpu1.position + cpu1Roll
         setCpu1({
-            name: "cpu1",
-            avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png",
+            ...cpu1, 
             position: cpu1Move
         })
     }
 
     function cpu2Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
-        let cpu2Roll = dice[Math.floor(Math.random()*3)]
+        let cpu2Roll = dice[Math.floor(Math.random()*6)]
         let cpu2Move = cpu2.position + cpu2Roll
         setCpu2({
-            name: "cpu2",
-            avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png",
+            ...cpu2,
             position: cpu2Move
         })
     }
 
     function cpu3Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
-        let cpu3Roll = dice[Math.floor(Math.random()*3)]
+        let cpu3Roll = dice[Math.floor(Math.random()*6)]
         let cpu3Move = cpu3.position + cpu3Roll
         setCpu3({
-            name: "cpu3",
-            avatar: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png",
+            ...cpu3,
             position: cpu3Move
         })
     }
 
     return(
         <div>
-            <button onClick={handleRoll}>ROLL</button>
+            <button id='dice' onClick={handleRoll}>ROLL</button>
             <div id="game-board">
                 {assignPositions}
             </div>

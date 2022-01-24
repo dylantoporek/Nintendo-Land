@@ -88,18 +88,200 @@
   left: 600px;
 }
 
-/* GAME BOARD / AVATAR */
+/* New Game Form /////////////////////////////////////////////////////////////// */
+
+#new-game-form{
+  position: absolute;
+  top: 100px;
+}
+
+#start-new-game{
+  position: relative;
+  top: 500px;
+  left: 70px;
+
+}
+
+#back-to-home{
+  position: relative;
+  top: 550px;
+  left: -35px;
+}
+
+#p1-label{
+position: relative;
+left: 5px;
+}
+
+#p1-select{
+position: relative;
+left: 10px;
+}
+
+#cpu1-label{
+  position: relative;
+  top: 50px;
+  left: -230px;
+}
+
+#cpu1-select{
+  position: relative;
+  top: 50px;
+  left: -225px;
+}
+
+#cpu2-label{
+  position: relative;
+  top: 100px;
+  left: -443px;
+}
+
+#cpu2-select{
+  position: relative;
+  top: 100px;
+  left: -438px;
+}
+
+#cpu3-label{
+  position: relative;
+  top: 150px;
+  left: -675px;
+}
+
+#cpu3-select{
+  position: relative;
+  top: 150px;
+  left: -670px;
+}
+
+#character-select-submit{
+  position: relative;
+  top: 200px;
+  left: -850px;
+}
+
+#preview-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  left: 500px;
+}
+
+#avatar-preview{
+  position: relative;
+  max-width: 10px;
+  max-height: 10px;
+}
+
+/* Load Form ////////////////////////////////////// */
+
+.load-files{
+  position: relative;
+  background-color: whitesmoke;
+  width: 200px;
+  height: 100px;
+  top: 50px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  left: 30px;
+  z-index: 1000000000;
+}
+
+.save-files{
+  position: relative;
+}
+
+.save-files-avatar{
+  position: relative;
+  max-width: 110%;
+  max-height: 110%;
+}
+
+.load-game-submits{
+  position: relative;
+  left: 50px;
+  top: -100px;
+}
+
+.load-game-deletes{
+  position: relative;
+  left: 125px;
+  top: -70px;
+}
+
+#back-to-home-from-load{
+  position: relative;
+  left: 500px;
+}
+
+/* Home Page//////////////////////////////////////////////////////////////////// */
+
+#home-new-game-button{
+  position: relative;
+  top: 200px;
+  left: 682px;
+}
+
+#home-load-game-button{
+  position: relative;
+  top: 250px;
+  left: 600px;
+}
+
+
+/* NavBar //////////////////////////////////////////////////////////////////////// */
+#nav{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: orangered;
+  width: 110px;
+  height: 20px;
+}
+
+#link-home{
+  position: relative;
+  -webkit-text-fill-color: white;
+  left: 5px;
+  z-index: 10000000000000000000000000;
+}
+
+#link-game{
+  position: relative;
+  left: 15px;
+  z-index: 10000000000000000000000000;
+  -webkit-text-fill-color: white;
+}
+
+#sign-out-button{
+  position: relative;
+  left: 1250px;
+  top: -20px;
+  z-index: 10000000000000000000000000000;
+}
+/* GAME BOARD / AVATAR ////////////////////////////////////////////////////////////*/
 
 #game-board{
-  position: absolute;
-  width: 1400px;
-  height: 800px;
+  position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .avatar {
   max-width: 110%;
   max-height: 110%;
   z-index: 100000;
+}
+
+#dice{
+  position: absolute;
+  z-index: 10;
+  top: 270px;
+  left: 70px;
 }
 
 /* Board Game Spacing */
@@ -137,7 +319,7 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 360px;
+  top: 365px;
   left: 135px;
   z-index: 10;
 }
@@ -183,7 +365,7 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 590px;
+  top: 570px;
   left: 10px;
   z-index: 10;
 }
@@ -192,7 +374,7 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 590px;
+  top: 570px;
   left: 70px;
   z-index: 10;
 }
@@ -200,7 +382,7 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 650px;
+  top: 630px;
   left: 10px;
   z-index: 10;
 }
@@ -208,7 +390,7 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 650px;
+  top: 630px;
   left: 60px;
   z-index: 10;
 }
@@ -291,3 +473,265 @@
 
 /* Space 5 ///////////////////////////////////////////////// */
 
+.space-player-5{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 320px;
+  z-index: 10;
+}
+
+.space-cpu1-5{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 390px;
+  z-index: 10;
+}
+
+.space-cpu2-5{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 320px;
+  z-index: 10;
+}
+
+.space-cpu3-5{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 370px;
+  z-index: 10;
+}
+/* Space 6 //////////////////////////////////////// */
+
+.space-player-6{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 430px;
+  z-index: 10;
+}
+
+.space-cpu1-6{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 490px;
+  z-index: 10;
+}
+
+.space-cpu2-6{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 430px;
+  z-index: 10;
+}
+
+.space-cpu3-6{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 480px;
+  z-index: 10;
+}
+
+/* Space 7 ////////////////////////////////////////////////// */
+
+.space-player-7{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 540px;
+  z-index: 10;
+}
+
+.space-cpu1-7{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 600px;
+  z-index: 10;
+}
+
+.space-cpu2-7{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 540px;
+  z-index: 10;
+}
+
+.space-cpu3-7{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 590px;
+  z-index: 10;
+}
+
+/* Space 8  //////////////////////////////////////*/
+
+.space-player-8{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 640px;
+  z-index: 10;
+}
+
+.space-cpu1-8{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 580px;
+  left: 690px;
+  z-index: 10;
+}
+
+.space-cpu2-8{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 640px;
+  z-index: 10;
+}
+
+.space-cpu3-8{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 640px;
+  left: 680px;
+  z-index: 10;
+}
+
+/* Space 9 /////////////////////// */
+
+.space-player-9{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 490px;
+  left: 640px;
+  z-index: 10;
+}
+
+.space-cpu1-9{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 490px;
+  left: 690px;
+  z-index: 10;
+}
+
+.space-cpu2-9{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 550px;
+  left: 640px;
+  z-index: 10;
+}
+
+.space-cpu3-9{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 550px;
+  left: 680px;
+  z-index: 10;
+}
+
+/* Space 10 //////////////////////////////////// */
+
+.space-player-10{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 490px;
+  left: 720px;
+  z-index: 10;
+}
+
+.space-cpu1-10{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 490px;
+  left: 780px;
+  z-index: 10;
+}
+
+.space-cpu2-10{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 540px;
+  left: 720px;
+  z-index: 10;
+}
+
+.space-cpu3-10{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 540px;
+  left: 770px;
+  z-index: 10;
+}
+
+/* Space 11 ///////////////*/
+
+.space-player-11{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 490px;
+  left: 820px;
+  z-index: 10;
+}
+
+.space-cpu1-11{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 490px;
+  left: 870px;
+  z-index: 10;
+}
+
+.space-cpu2-11{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 540px;
+  left: 820px;
+  z-index: 10;
+}
+
+.space-cpu3-11{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 540px;
+  left: 860px;
+  z-index: 10;
+}

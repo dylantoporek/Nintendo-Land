@@ -8,31 +8,51 @@ import Home from "./pages/Home";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [game, setGame] = useState(null)
+  const [gameFiles, setGameFiles] = useState(null)
 
-  // useEffect(() => {
-  //   // auto-login
-  //   fetch("http://localhost:3000/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  console.log(game)
 
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      } else{
+        r.json().then((data)=> console.log(data))
+      }
+    });
+
+    fetch("/games").then((r)=> {
+      if (r.ok) {
+        r.json().then((games)=> {
+          
+          const mostRecent = games[games.length - 1]
+          setGame(mostRecent)
+          setGameFiles(games)
+        })
+      } else {
+        r.json().then((data)=> console.log(data))
+      }
+    })
+  }, []);
+
+  console.log(user)
   if (!user){
     return <Login onLogin={setUser} />;
   } 
   else {
     return (
       <div>
-        <NavBar/>
+        <NavBar setUser={setUser}/>
         <Routes>
           <Route 
             path="/game" 
-            element={<Game/>}>
+            element={<Game game={game}/>}>
           </Route>
           <Route 
             path="/" 
-            element={<Home/>}>
+            element={<Home setGame={setGame} gameFiles={gameFiles} />}>
           </Route>
         </Routes>
         </div>
