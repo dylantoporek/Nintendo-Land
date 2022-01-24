@@ -35,8 +35,7 @@ function App() {
             element={<Home/>}>
           </Route>
         </Routes>
-
-      </div>
+        </div>
   );
   }
 

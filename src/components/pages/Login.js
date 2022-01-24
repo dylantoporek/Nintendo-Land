@@ -12,7 +12,7 @@ function Login({onLogin}){
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
-            <p>
+            <p id='signup-link'>
               Don't have an account? &nbsp;
               <button color="secondary" onClick={() => setShowLogin(false)}>
                 Sign Up
@@ -22,7 +22,7 @@ function Login({onLogin}){
         ) : (
           <>
             <SignUpForm onLogin={onLogin} />
-            <p>
+            <p id='login-link'>
               Already have an account? &nbsp;
               <button color="secondary" onClick={() => setShowLogin(true)}>
                 Log In

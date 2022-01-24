@@ -1,3 +1,95 @@
+/* Login / SignUp Forms */
+#login-form{
+  position: absolute;
+  top: 200px;
+  left: 600px;
+}
+
+#username-label{
+  position: relative;
+  top: -50px;
+}
+
+#username-input{
+  position: relative;
+  top: -50px;
+
+}
+
+#password-label{
+  position: relative;
+  left: -225px;
+}
+
+#password-input{
+  position: relative;
+  left: -225px;
+}
+
+#submit-login{
+  position: relative;
+  left: -330px;
+  top: 50px;
+}
+
+#signup-link{
+  position: relative;
+  top: 300px;
+  left: 600px;
+}
+
+#signup-form{
+  position: absolute;
+  top: 200px;
+  left: 600px;
+}
+
+#signup-username-label{
+  position: relative;
+  top: -50px;
+}
+
+#signup-username{
+  position: relative;
+  top: -50px;
+}
+
+#signup-password-label{
+  position: relative;
+  left: -225px;
+}
+
+#signup-password{
+  position: relative;
+  left: -225px;
+}
+
+#signup-passwordconf-label{
+  position: relative;
+  left: -545px;
+  top: 50px;
+}
+
+#signup-password_confirmation{
+  position: relative;
+  top: 50px;
+  left: -545px;
+}
+
+#signup-submit{
+  position: relative;
+  top:100px;
+  left: -650px;
+}
+
+#login-link{
+  position: relative;
+  top: 350px;
+  left: 600px;
+}
+
+/* GAME BOARD / AVATAR */
+
 #game-board{
   position: absolute;
   width: 1400px;
