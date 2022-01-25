@@ -14,13 +14,31 @@ function LoadForm({setGame, setTogLoadGame, gameFiles}){
     }, [])
 
     function handleLoad(e){
-        let loadIndex = e.target.value - 1
-        setGame(loadFiles[`${loadIndex}`])
+        const loadGame = findFile(e.target.value)
+        setGame(loadGame)
         navigate('/game')
     }
 
     function handleDelete(e){
-        console.log(e.target.value)
+        const deletedFile = findFile(e.target.value)
+        const updatedLoadFiles = loadFiles.filter((file)=> file.id != deletedFile.id)
+        setLoadFiles(updatedLoadFiles)
+
+        fetch(`/games/${deletedFile.id}`, {
+            method: 'DELETE',
+          })
+          .then((res) => {
+            if (res.ok) {
+              console.log("file deleted")
+            } else {
+              res.json().then((data)=> console.log(data))
+            }
+          })
+    }
+
+    function findFile(num){
+       const foundFile = loadFiles.find((file) => parseInt(file.id) === parseInt(num))
+       return foundFile
     }
 
     const loadDisplay = loadFiles.map((file) =>{

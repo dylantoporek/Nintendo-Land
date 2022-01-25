@@ -11,8 +11,6 @@ function App() {
   const [game, setGame] = useState(null)
   const [gameFiles, setGameFiles] = useState(null)
 
-  console.log(game)
-
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -37,7 +35,7 @@ function App() {
     })
   }, []);
 
-  console.log(user)
+
   if (!user){
     return <Login onLogin={setUser} />;
   } 
@@ -52,7 +50,7 @@ function App() {
           </Route>
           <Route 
             path="/" 
-            element={<Home setGame={setGame} gameFiles={gameFiles} />}>
+            element={<Home setGame={setGame} setGameFiles={setGameFiles} gameFiles={gameFiles} />}>
           </Route>
         </Routes>
         </div>
