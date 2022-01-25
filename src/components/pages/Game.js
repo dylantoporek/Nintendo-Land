@@ -125,13 +125,29 @@ useEffect(()=>{
         })
     }
 
+    function handleSave(){
+        fetch(`/games/${game.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
+        }).then(r => {
+            if(r.ok){
+                r.json().then( data=> console.log(data))
+            } else{
+                r.json().then(console.log('error saving game'))
+            }
+        })
+    }
+
     return(
         <div>
             <button id='dice' onClick={handleRoll}>ROLL</button>
             <div id="game-board">
                 {assignPositions}
             </div>
-            
+            <button id='save-game-button' onClick={handleSave}>Save Game</button>
             <img src={board}></img>
         </div>
     )

@@ -50,7 +50,7 @@ function App() {
           </Route>
           <Route 
             path="/" 
-            element={<Home setGame={setGame} setGameFiles={setGameFiles} gameFiles={gameFiles} />}>
+            element={<Home setGame={setGame} setGameFiles={setGameFiles} />}>
           </Route>
         </Routes>
         </div>

@@ -1,16 +1,19 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom"
 
-function LoadForm({setGame, setTogLoadGame, gameFiles}){
+function LoadForm({setGame, setTogLoadGame}){
     const [loadFiles, setLoadFiles] = useState([])
     const navigate = useNavigate()
     useEffect(()=> {
-        if (gameFiles){
-            setLoadFiles(gameFiles)
-        } else {
-            alert("you have no saved games")
-            navigate('/')
-        }
+        fetch("/games").then((r)=> {
+            if (r.ok) {
+              r.json().then((games)=> {
+                setLoadFiles(games)
+              })
+            } else {
+              r.json().then((data)=> console.log(data))
+            }
+          })
     }, [])
 
     function handleLoad(e){

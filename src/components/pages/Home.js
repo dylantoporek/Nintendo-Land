@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import GameForm from '../GameForm'
 import LoadForm from "../LoadForm";
 
-function Home({setGame, gameFiles}){
+function Home({setGame}){
     const[togNewGame, setTogNewGame] = useState(false)
     const[togLoadGame, setTogLoadGame] = useState(false)
 
@@ -19,7 +19,7 @@ function Home({setGame, gameFiles}){
     }
 
     if (togLoadGame){
-        return <LoadForm gameFiles={gameFiles} setGame={setGame} setTogLoadGame={setTogLoadGame} />
+        return <LoadForm setGame={setGame} setTogLoadGame={setTogLoadGame} />
     }
     else{
         return(
