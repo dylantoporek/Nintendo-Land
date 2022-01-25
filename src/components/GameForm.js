@@ -5,7 +5,7 @@ function GameForm({setGame , setTogNewGame}){
     const [playerAvatar, setPlayerAvatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png")
     const [cpu1Avatar, setCpu1Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png")
     const [cpu2Avatar, setCpu2Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png")
-    const [cpu3Avatar, setCpu3Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png")
+    const [cpu3Avatar, setCpu3Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1bd70000-03860002.png")
     const [playerPosition, setPlayerPosition] = useState(0)
     const [cpu1Position, setCpu1Position] = useState(0)
     const [cpu2Position, setCpu2Position] = useState(0)
@@ -102,7 +102,7 @@ function GameForm({setGame , setTogNewGame}){
                 <label id='cpu2-label'>Pick Cpu2 Character</label>
                 <select id='cpu2-select' value={cpu2Avatar} onChange={handleC2Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png">Ganondorf</option>
-                    <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01400000-03550902.png">Guardian</option>
+                    <option value='https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010100-00170002.png'>Sheik</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01410000-035c0902.png">Bokoblin</option>
                 </select>
 
@@ -111,7 +111,7 @@ function GameForm({setGame , setTogNewGame}){
 
                 <label id='cpu3-label'>Pick Cpu3 Character</label>
                 <select id='cpu3-select' value={cpu3Avatar} onChange={handleC3Change}>
-                    <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png">Charizard</option>
+                    <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1bd70000-03860002.png">Incineroar</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19020000-03830002.png">Ivysaur</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19960000-023d0002.png">Mewtwo</option>
                 </select>
