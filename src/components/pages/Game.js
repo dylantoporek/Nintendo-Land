@@ -1,69 +1,68 @@
 import React, {useState, useEffect} from "react";
 import './App.css'
 import board from '../pages/Board.png'
+import dice from '../pages/dice.png'
 import {useNavigate} from 'react-router-dom'
 
 function Game({game}){
     const [player, setPlayer] = useState({
         name: "player",
-        avatar: "",
+        avatar: game.player_avatar,
         position: 0
     })
 
     const [cpu1, setCpu1] = useState({
         name: "cpu1",
-        avatar: "",
+        avatar: game.cpu1_avatar,
         position: 0
     })
 
     const [cpu2, setCpu2] = useState({
         name: "cpu2",
-        avatar: "",
+        avatar: game.cpu2_avatar,
         position: 0
     })
 
     const [cpu3, setCpu3] = useState({
         name: "cpu3",
-        avatar: "",
+        avatar: game.cpu3_avatar,
         position: 0
     })
 
     const navigate = useNavigate()
 
-useEffect(()=>{
-    if (game){
-        console.log(game.player_avater)
-        setPlayer({
-            name: "player",
-            avatar: game.player_avatar,
-            position: game.player_position
-        })
+// useEffect(()=>{
+//     if (game){
+//         console.log(game.player_avater)
+//         setPlayer({
+//             name: "player",
+//             avatar: game.player_avatar,
+//             position: game.player_position
+//         })
     
-        setCpu1({
-            name: "cpu1",
-            avatar: game.cpu1_avatar,
-            position: game.cpu1_position
-        })
+//         setCpu1({
+//             name: "cpu1",
+//             avatar: game.cpu1_avatar,
+//             position: game.cpu1_position
+//         })
         
-        setCpu2({
-            name: "cpu2",
-            avatar: game.cpu2_avatar,
-            position: game.cpu2_position
-        })
+//         setCpu2({
+//             name: "cpu2",
+//             avatar: game.cpu2_avatar,
+//             position: game.cpu2_position
+//         })
     
-        setCpu3({
-            name: "cpu3",
-            avatar: game.cpu3_avatar,
-            position: game.cpu3_position
-        })
-    } else {
-        alert('You must create a new game or load an existing game to play.')
-        navigate('/')
-    }
-}, [])
-    
-    
-    console.log(player, cpu1, cpu2, cpu3)
+//         setCpu3({
+//             name: "cpu3",
+//             avatar: game.cpu3_avatar,
+//             position: game.cpu3_position
+//         })
+//     } else {
+//         alert('You must create a new game or load an existing game to play.')
+//         navigate('/')
+//     }
+// }, [])
+
 
     const activePlayers = [
         player, cpu1, cpu2, cpu3
@@ -93,6 +92,7 @@ useEffect(()=>{
             ...player, 
             position: playerMove
         })
+        
     }
 
     function cpu1Roll(){
@@ -141,9 +141,15 @@ useEffect(()=>{
         })
     }
 
+    const positionDisplay = activePlayers.map((player) => {
+        return <div>
+            <img className='avatar-hub' src={player.avatar}/>
+        </div>
+    })
+
     return(
         <div>
-            <button id='dice' onClick={handleRoll}>ROLL</button>
+            <img id='dice' src={dice} onClick={handleRoll}/>
             <div id="game-board">
                 {assignPositions}
             </div>
