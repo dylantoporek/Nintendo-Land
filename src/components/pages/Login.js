@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 import LoginForm from "../LoginForm";
 import SignUpForm from "../SignUpForm";
+import donthaveaccount from '../pages/donthaveanaccount.png'
+import signuplabel from '../pages/signup.png'
+import loginlabel from '../pages/login.png'
+import alreadyhaveaccount from '../pages/alreadyhaveanaccount.png'
 
 function Login({onLogin}){
     const [showLogin, setShowLogin] = useState(true);
@@ -12,22 +16,20 @@ function Login({onLogin}){
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
-            <p id='signup-link'>
-              Don't have an account? &nbsp;
-              <button color="secondary" onClick={() => setShowLogin(false)}>
-                Sign Up
-              </button>
-            </p>
+            <img src={donthaveaccount} id='signup-link'>
+              
+            </img>
+            <button color="secondary" id='take-to-sign-up' onClick={() => setShowLogin(false)}>
+                <img id='sign-me-up' src={signuplabel}/>
+            </button>
           </>
         ) : (
           <>
             <SignUpForm onLogin={onLogin} />
-            <p id='login-link'>
-              Already have an account? &nbsp;
-              <button color="secondary" onClick={() => setShowLogin(true)}>
-                Log In
+            <img src={alreadyhaveaccount} id='login-link'/>
+              <button id='take-to-log-in' color="secondary" onClick={() => setShowLogin(true)}>
+                <img id='log-me-in' src={loginlabel}/>
               </button>
-            </p>
           </>
         )}
       </div>

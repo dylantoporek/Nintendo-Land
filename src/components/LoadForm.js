@@ -47,7 +47,13 @@ function LoadForm({setGame, setTogLoadGame}){
     const loadDisplay = loadFiles.map((file) =>{
         return <div className='load-files' key={file.id}>
             <p className="save-files">save file {file.id}</p>
+            <div id="load-game-avatar-container">
             <img className="save-files-avatar" src={file.player_avatar}></img>
+            <img className="save-files-avatar" src={file.cpu1_avatar}></img>
+            <img className="save-files-avatar" src={file.cpu2_avatar}></img>
+            <img className="save-files-avatar" src={file.cpu3_avatar}></img>
+            </div>
+            
             <button className='load-game-submits' onClick={handleLoad} value={file.id}>Load Game</button>
             <button className='load-game-deletes' onClick={handleDelete} value={file.id}>Delete Game</button>
         </div>
@@ -56,7 +62,6 @@ function LoadForm({setGame, setTogLoadGame}){
     return (
         <div>
             {loadDisplay}
-            <button id='back-to-home-from-load' onClick={()=> setTogLoadGame(false)}>Back to Home</button>
         </div>
     )
 }

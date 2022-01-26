@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import userlabel from './pages/username.png'
+import passwordlabel from './pages/password.png'
+import passwordconflabel from './pages/passwordconfirmation.png'
+import signuplabel from './pages/signup.png'
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -33,7 +37,7 @@ function SignUpForm({ onLogin }) {
 
   return (
     <form id='signup-form' onSubmit={handleSubmit}>
-        <label id="signup-username-label">Username</label>
+        <img src={userlabel} id="signup-username-label" />
         <input
           type="text"
           id="signup-username"
@@ -41,7 +45,7 @@ function SignUpForm({ onLogin }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label id="signup-password-label">Password</label>
+        <img src={passwordlabel} id="signup-password-label"/>
         <input
           type="password"
           id="signup-password"
@@ -49,7 +53,7 @@ function SignUpForm({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
         />
-        <label id="signup-passwordconf-label">Password Confirmation</label>
+        <img src={passwordconflabel} id="signup-passwordconf-label" />
         <input
           type="password"
           id="signup-password_confirmation"
@@ -57,7 +61,9 @@ function SignUpForm({ onLogin }) {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-        <button id='signup-submit' type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+        <button id='signup-submit' type="submit">
+          <img id='sign-up-label-pic' src={signuplabel}/>
+        </button>
       <div className='errors'>
         {errors.map((err) => (
           <p key={err}>{err}</p>

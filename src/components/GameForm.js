@@ -119,7 +119,6 @@ function GameForm({setGame , setTogNewGame}){
 
             <button id='start-new-game' onClick={newGameStart}>Start New Game</button>
 
-            <button id='back-to-home' onClick={()=> setTogNewGame(false)}>Back to Home</button>
             <div id='preview-container'>
                 {selectedDisplay}
             </div>

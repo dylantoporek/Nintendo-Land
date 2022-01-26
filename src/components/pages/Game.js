@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 function Game({game}){
     const [player, setPlayer] = useState({
         name: "player",
-        avatar: '',
+        avatar: "",
         position: 0
     })
 
@@ -33,7 +33,7 @@ function Game({game}){
 
 useEffect(()=>{
     if (game){
-        console.log(game.player_avater)
+        console.log(game.player_avatar)
         setPlayer({
             name: "player",
             avatar: game.player_avatar,
@@ -89,6 +89,10 @@ function handleSave(){
         setTimeout(cpu2Roll, 3000)
         setTimeout(cpu3Roll, 4000)
         
+    }
+
+    function checkBoardSpaceEffect(){
+        console.log(activePlayers)
     }
 
     function playerRoll(){
@@ -150,7 +154,7 @@ function handleSave(){
     })
 
     const positionDisplay = activePlayers.map((player) => {
-        let order = whoIsWinning.sort()
+        const order = whoIsWinning.sort()
         if (parseInt(player.position) === parseInt(order[order.length - 1])){
             return <div id={player.name}>
             {player.name} : 1st Place

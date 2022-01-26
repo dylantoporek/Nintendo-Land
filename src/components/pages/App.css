@@ -2,12 +2,15 @@
 #login-form{
   position: absolute;
   top: 200px;
-  left: 600px;
+  left: 500px;
 }
 
 #username-label{
   position: relative;
-  top: -50px;
+  top: -42px;
+  left: -10px;
+  max-height: 20%;
+  max-width: 20%;
 }
 
 #username-input{
@@ -18,24 +21,53 @@
 
 #password-label{
   position: relative;
-  left: -225px;
+  max-height: 20%;
+  max-width: 20%;
+  left: -347px;
+  top: 10px;
 }
 
 #password-input{
   position: relative;
-  left: -225px;
+  left: -340px;
+  top: 2px;
 }
 
 #submit-login{
   position: relative;
-  left: -330px;
-  top: 50px;
+  background-color: white;
+  border-color: transparent;
+  left: -600px;
+  width: 200px;
+  top: 100px;
+  text-shadow: none;
+}
+
+#loginlabel{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #signup-link{
   position: relative;
-  top: 300px;
-  left: 600px;
+  top: 500px;
+  left: 550px;
+  max-width: 20%;
+  max-height: 20%
+}
+
+#take-to-sign-up{
+  position: relative;
+  background-color: white;
+  border-color: transparent;
+  width: 150px;
+  top: 505px;
+  left: 560px;
+}
+
+#sign-me-up{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #signup-form{
@@ -46,7 +78,10 @@
 
 #signup-username-label{
   position: relative;
-  top: -50px;
+  top: -42px;
+  left: -10px;
+  max-height: 20%;
+  max-width: 20%;
 }
 
 #signup-username{
@@ -56,36 +91,68 @@
 
 #signup-password-label{
   position: relative;
-  left: -225px;
+  left: -328px;
+  top: 20px;
+  max-height: 20%;
+  max-width: 20%;
 }
 
 #signup-password{
   position: relative;
-  left: -225px;
+  top: 12px;
+  left: -318px;
 }
 
 #signup-passwordconf-label{
   position: relative;
-  left: -545px;
-  top: 50px;
+  left: -240px;
+  top: 47px;
+  max-height: 48%;
+  max-width: 48%;
 }
 
 #signup-password_confirmation{
   position: relative;
-  top: 50px;
-  left: -545px;
+  top: 40px;
+  left: -230px;
 }
 
 #signup-submit{
   position: relative;
-  top:100px;
-  left: -650px;
+  background-color: white;
+  border-color: transparent;
+  left: -500px;
+  width: 200px;
+  top: 150px;
+  text-shadow: none;
+}
+
+#sign-up-label-pic{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #login-link{
   position: relative;
-  top: 350px;
-  left: 600px;
+  top: 500px;
+  left: 550px;
+  max-width: 20%;
+  max-height: 20%
+}
+
+#take-to-log-in{
+  position: relative;
+  background-color: white;
+  border-color: transparent;
+  width: 150px;
+  top: 505px;
+  left: 550px;
+  text-shadow: none;
+}
+
+#log-me-in{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* New Game Form /////////////////////////////////////////////////////////////// */
@@ -94,19 +161,19 @@
   position: absolute;
   display: flex;
   flex-direction: row;
-  top: 300px;
+  top: 400px;
 }
 
 #start-new-game{
   position: relative;
-  top: 500px;
+  top: 600px;
   left: 700px;
 
 }
 
 #back-to-home{
   position: relative;
-  top: 550px;
+  top: 20px;
   left: 590px;
 }
 
@@ -163,7 +230,7 @@ left: 110px;
   position: relative;
   display: flex;
   flex-direction: row;
-  top: 100px;
+  top: 200px;
   width: 500px;
   height: 150px;
   left: 150px;
@@ -181,7 +248,9 @@ left: 110px;
 .load-files{
   position: relative;
   background-color: whitesmoke;
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
   height: 100px;
   top: 50px;
   padding-top: 60px;
@@ -194,27 +263,39 @@ left: 110px;
   position: relative;
 }
 
+#load-game-avatar-container{
+  position: relative;
+  padding-left: 10px;
+}
+
 .save-files-avatar{
   position: relative;
-  max-width: 110%;
-  max-height: 110%;
+  max-width: 80px;
+  max-height: 100px;
+  padding-right: 30px;
 }
 
 .load-game-submits{
   position: relative;
-  left: 50px;
+  left: 525px;
   top: -100px;
+  max-width: 100px;
+  max-height: 40px;
 }
 
 .load-game-deletes{
   position: relative;
-  left: 125px;
+  left: 525px;
   top: -70px;
+  max-width: 100px;
+  max-height: 40px;
 }
 
 #back-to-home-from-load{
-  position: relative;
-  left: 500px;
+  position: absolute;
+  left: 650px;
+  top: 20px;
+  z-index: 1000000000000000000;
 }
 
 /* Home Page//////////////////////////////////////////////////////////////////// */

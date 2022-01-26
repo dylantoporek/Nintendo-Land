@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import './pages/App.css'
+import userlabel from './pages/username.png'
+import passwordlabel from './pages/password.png'
+import loginlabel from './pages/login.png'
+
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -28,7 +32,7 @@ function LoginForm({ onLogin }) {
 
   return (
     <form id='login-form' onSubmit={handleSubmit}>
-        <label id="username-label">Username</label>
+        <img src={userlabel} id='username-label'/>
         <input
           type="text"
           id="username-input"
@@ -36,7 +40,7 @@ function LoginForm({ onLogin }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label id="password-label">Password</label>
+        <img src={passwordlabel} id="password-label" />
         <input
           type="password"
           id="password-input"
@@ -45,7 +49,7 @@ function LoginForm({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button id='submit-login' variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
+           <img id='loginlabel' src={loginlabel} />
         </button>
       
         <div className="errors">

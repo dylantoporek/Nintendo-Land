@@ -2,9 +2,7 @@ import React, {useState} from "react";
 import GameForm from '../GameForm'
 import LoadForm from "../LoadForm";
 
-function Home({setGame}){
-    const[togNewGame, setTogNewGame] = useState(false)
-    const[togLoadGame, setTogLoadGame] = useState(false)
+function Home({setGame, togLoadGame, togNewGame, setTogNewGame, setTogLoadGame}){
 
     function handleNGClick(){
         setTogNewGame(true)

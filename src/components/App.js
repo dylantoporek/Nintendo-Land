@@ -10,6 +10,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [game, setGame] = useState(null)
   const [gameFiles, setGameFiles] = useState(null)
+    const[togNewGame, setTogNewGame] = useState(false)
+    const[togLoadGame, setTogLoadGame] = useState(false)
 
   useEffect(() => {
     // auto-login
@@ -42,7 +44,12 @@ function App() {
   else {
     return (
       <div>
-        <NavBar setUser={setUser}/>
+        <NavBar 
+          setUser={setUser} 
+          togNewGame={togNewGame}
+          togLoadGame={togLoadGame}
+          setTogNewGame={setTogNewGame} 
+          setTogLoadGame={setTogLoadGame}/>
         <Routes>
           <Route 
             path="/game" 
@@ -50,7 +57,14 @@ function App() {
           </Route>
           <Route 
             path="/" 
-            element={<Home setGame={setGame} setGameFiles={setGameFiles} />}>
+            element={<Home 
+              setGame={setGame} 
+              setGameFiles={setGameFiles} 
+              togNewGame={togNewGame}
+              togLoadGame={togLoadGame}
+              setTogNewGame={setTogNewGame}
+              setTogLoadGame={setTogLoadGame}
+              />}>
           </Route>
         </Routes>
         </div>
