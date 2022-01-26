@@ -1,5 +1,10 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
+import playerlabel from './pages/playerlabel.png'
+import cpu1label from './pages/cpu1label.png'
+import cpu2label from './pages/cpu2label.png'
+import cpu3label from './pages/cpu3label.png'
+import start from './pages/start.png'
 
 function GameForm({setGame , setTogNewGame}){
     const [playerAvatar, setPlayerAvatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png")
@@ -15,14 +20,6 @@ function GameForm({setGame , setTogNewGame}){
     
     function handlePChange(e){
         setPlayerAvatar(e.target.value)
-    }
-
-    function handleSubmit(e){
-        e.preventDefault()
-        console.log(playerAvatar)
-        console.log(cpu1Avatar)
-        console.log(cpu2Avatar)
-        console.log(cpu3Avatar)
     }
 
     function handleC1Change(e){
@@ -76,8 +73,8 @@ function GameForm({setGame , setTogNewGame}){
     })
     return(
         <div>
-            <form id='new-game-form' onSubmit={handleSubmit}>
-                <label id='p1-label'>Pick Your Character</label>
+            <form id='new-game-form'>
+                <img src={playerlabel} id='p1-label'/>
                 <select id='p1-select' value={playerAvatar} onChange={handlePChange}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png">Mario</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01000000-037c0002.png">Young Link</option>
@@ -91,7 +88,7 @@ function GameForm({setGame , setTogNewGame}){
                
 
             
-                <label id='cpu1-label'>Pick Cpu1 Character</label>
+                <img src={cpu1label} id='cpu1-label'/>
                 <select id='cpu1-select' value={cpu1Avatar} onChange={handleC1Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png">Luigi</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00140000-02670102.png">Waluigi</option>
@@ -99,7 +96,7 @@ function GameForm({setGame , setTogNewGame}){
                 </select>
 
 
-                <label id='cpu2-label'>Pick Cpu2 Character</label>
+                <img src={cpu2label} id='cpu2-label'/>
                 <select id='cpu2-select' value={cpu2Avatar} onChange={handleC2Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png">Ganondorf</option>
                     <option value='https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010100-00170002.png'>Sheik</option>
@@ -109,7 +106,7 @@ function GameForm({setGame , setTogNewGame}){
   
 
 
-                <label id='cpu3-label'>Pick Cpu3 Character</label>
+                <img src={cpu3label} id='cpu3-label'/>
                 <select id='cpu3-select' value={cpu3Avatar} onChange={handleC3Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1bd70000-03860002.png">Incineroar</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19020000-03830002.png">Ivysaur</option>
@@ -117,7 +114,9 @@ function GameForm({setGame , setTogNewGame}){
                 </select>
             </form>
 
-            <button id='start-new-game' onClick={newGameStart}>Start New Game</button>
+            <button id='start-new-game' onClick={newGameStart}>
+                <img id='start-button-styler' src={start} />
+            </button>
 
             <div id='preview-container'>
                 {selectedDisplay}

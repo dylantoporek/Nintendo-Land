@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom"
+import loadgame from './pages/loadgame.png'
+import deletegame from './pages/deletegame.png'
 
 function LoadForm({setGame, setTogLoadGame}){
     const [loadFiles, setLoadFiles] = useState([])
@@ -17,13 +19,13 @@ function LoadForm({setGame, setTogLoadGame}){
     }, [])
 
     function handleLoad(e){
-        const loadGame = findFile(e.target.value)
+        const loadGame = findFile(e.target.dataset.id)
         setGame(loadGame)
         navigate('/game')
     }
 
     function handleDelete(e){
-        const deletedFile = findFile(e.target.value)
+        const deletedFile = findFile(e.target.dataset.id)
         const updatedLoadFiles = loadFiles.filter((file)=> file.id != deletedFile.id)
         setLoadFiles(updatedLoadFiles)
 
@@ -54,8 +56,12 @@ function LoadForm({setGame, setTogLoadGame}){
             <img className="save-files-avatar" src={file.cpu3_avatar}></img>
             </div>
             
-            <button className='load-game-submits' onClick={handleLoad} value={file.id}>Load Game</button>
-            <button className='load-game-deletes' onClick={handleDelete} value={file.id}>Delete Game</button>
+            <button className='load-game-submits' onClick={handleLoad} value={file.id}>
+                <img className='load-game-img' src={loadgame} data-id={file.id}/>
+            </button>
+            <button className='load-game-deletes' onClick={handleDelete} value={file.id}>
+                <img className='delete-game-img' src={deletegame}  data-id={file.id}/>
+            </button>
         </div>
     })
 

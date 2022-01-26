@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from "react";
 import './App.css'
-import board from '../pages/Board.png'
+import board from '../pages/board3.0.png'
 import dice from '../pages/dice.png'
 import {useNavigate} from 'react-router-dom'
+import playerlabel from '../pages/playerlabel.png'
+import cpu1label from '../pages/cpu1label.png'
+import cpu2label from '../pages/cpu2label.png'
+import cpu3label from '../pages/cpu3label.png'
 
 function Game({game}){
     const [player, setPlayer] = useState({

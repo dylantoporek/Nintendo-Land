@@ -161,14 +161,23 @@
   position: absolute;
   display: flex;
   flex-direction: row;
-  top: 400px;
+  top: 350px;
+  left: 100px;
 }
 
 #start-new-game{
   position: relative;
   top: 600px;
-  left: 700px;
+  left: 620px;
+  width: 200px;
+  background-color: white;
+  border-color: transparent;
+}
 
+#start-button-styler{
+  max-width: 100%;
+  max-height: 100%;
+  
 }
 
 #back-to-home{
@@ -179,50 +188,58 @@
 
 #p1-label{
 position: relative;
-top: 40px;
+top: 70px;
 left: 100px;
+width: 10%;
+height: 10%;
 }
 
 #p1-select{
 position: relative;
-top: 40px;
-left: 110px;
+top: 120px;
+left: -20px;
 }
 
 #cpu1-label{
   position: relative;
-  top: 40px;
+  top: 70px;
   left: 160px;
+  width: 10%;
+  height: 10%;
 }
 
 #cpu1-select{
   position: relative;
-  top: 40px;
-  left: 170px;
+  top: 120px;
+  left: 55px;
 }
 
 #cpu2-label{
   position: relative;
-  top: 40px;
+  top: 70px;
   left: 220px;
+  width: 10%;
+  height: 10%;
 }
 
 #cpu2-select{
   position: relative;
-  top: 40px;
-  left: 230px;
+  top: 120px;
+  left: 105px;
 }
 
 #cpu3-label{
   position: relative;
-  top: 40px;
+  top: 70px;
   left: 280px;
+  width: 10%;
+  height: 10%;
 }
 
 #cpu3-select{
   position: relative;
-  top: 40px;
-  left: 290px;
+  top: 120px;
+  left: 165px;
 }
 
 
@@ -230,10 +247,10 @@ left: 110px;
   position: relative;
   display: flex;
   flex-direction: row;
-  top: 200px;
+  top: 150px;
   width: 500px;
   height: 150px;
-  left: 150px;
+  left: 170px;
 }
 
 .avatar-preview{
@@ -247,48 +264,66 @@ left: 110px;
 
 .load-files{
   position: relative;
-  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 1100px;
   height: 100px;
-  top: 50px;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  left: 30px;
+  top: 150px;
+  padding-top: 10px;
+  padding-bottom: 80px;
+  left: 90px;
+  border-color: black;
+  border-style: solid;
   z-index: 1000000000;
+  border-radius: 20%;
 }
 
 .save-files{
   position: relative;
+  left: 10px;
+  font-weight: bold;
 }
 
 #load-game-avatar-container{
   position: relative;
-  padding-left: 10px;
+  left: 150px;
 }
 
 .save-files-avatar{
   position: relative;
   max-width: 80px;
   max-height: 100px;
-  padding-right: 30px;
+  padding-right: 150px;
 }
 
 .load-game-submits{
   position: relative;
-  left: 525px;
-  top: -100px;
+  left: 1000px;
+  top: -110px;
   max-width: 100px;
   max-height: 40px;
+  background-color: white;
+  border-color: transparent;
+}
+
+.load-game-img{
+  max-width: 200%;
+  max-height: 200%;
 }
 
 .load-game-deletes{
   position: relative;
-  left: 525px;
-  top: -70px;
+  left: 1000px;
+  top: -60px;
   max-width: 100px;
   max-height: 40px;
+  background-color: white;
+  border-color: transparent;
+}
+
+.delete-game-img{
+  max-width: 200%;
+  max-height: 200%;
 }
 
 #back-to-home-from-load{
@@ -303,13 +338,29 @@ left: 110px;
 #home-new-game-button{
   position: relative;
   top: 200px;
-  left: 682px;
+  width: 400px;
+  left: 570px;
+  background-color: white;
+  border-color: transparent;
+}
+
+#home-new-game-img{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #home-load-game-button{
   position: relative;
-  top: 250px;
-  left: 600px;
+  top: 380px;
+  left: 170px;
+  width: 400px;
+  background-color: white;
+  border-color: transparent;
+}
+
+#home-load-game-img{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 
@@ -318,19 +369,22 @@ left: 110px;
   position: absolute;
   background-color: white;
   width: 1440px;
-  height: 40px;
+  height: 35px;
   left: 0;
   right: 0;
 }
 
 #link-home{
   position: relative;
-  -webkit-text-fill-color: black;
   left: 10px;
-  top: 10px;
+  width: 100px;
+  top: 0px;
   z-index: 10000000000000000000000000;
-  text-decoration: none;
-  font-weight: bold;
+}
+
+#nav-home-icon{
+  max-width: 75%;
+  max-height: 75%;
 }
 
 #link-game{
@@ -346,10 +400,16 @@ left: 110px;
 #sign-out-button{
   position: relative;
   background-color: white;
-  left: 1260px;
-  top: 10px;
-  font-weight: bold;
+  border-color: transparent;
+  left: 1180px;
+  top: 0px;
+  width: 100px;
   z-index: 10000000000000000000000000000;
+}
+
+#sign-out-styler{
+  max-height: 170%;
+  max-width: 170%;
 }
 /* GAME BOARD / AVATAR ////////////////////////////////////////////////////////////*/
 

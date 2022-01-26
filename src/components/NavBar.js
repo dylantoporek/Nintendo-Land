@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {useNavigate} from "react-router-dom"
+import home from './pages/home.png'
+import signout from './pages/signout.png'
 
 function NavBar({setUser, togLoadGame, togNewGame, setTogLoadGame, setTogNewGame}) {
 
@@ -27,10 +29,12 @@ function NavBar({setUser, togLoadGame, togNewGame, setTogLoadGame, setTogNewGame
     return (
         <div id='nav'>
             <NavLink id='link-home' to="/" onClick={handleRelocate}>
-                Home
+                <img id='nav-home-icon' src={home}/>
             </NavLink>
             <NavLink to="/game"></NavLink>
-            <button id='sign-out-button' onClick={handleLogoutClick}>Sign Out</button>
+            <button id='sign-out-button' onClick={handleLogoutClick}>
+                <img id='sign-out-styler' src={signout}/>
+            </button>
         </div>
     )
 }
