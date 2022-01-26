@@ -115,7 +115,6 @@ function GameForm({setGame , setTogNewGame}){
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19020000-03830002.png">Ivysaur</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19960000-023d0002.png">Mewtwo</option>
                 </select>
-                <button id='character-select-submit'>Choose Characters</button>
             </form>
 
             <button id='start-new-game' onClick={newGameStart}>Start New Game</button>

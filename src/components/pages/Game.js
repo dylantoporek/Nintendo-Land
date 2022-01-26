@@ -7,77 +7,80 @@ import {useNavigate} from 'react-router-dom'
 function Game({game}){
     const [player, setPlayer] = useState({
         name: "player",
-        avatar: game.player_avatar,
+        avatar: '',
         position: 0
     })
 
     const [cpu1, setCpu1] = useState({
         name: "cpu1",
-        avatar: game.cpu1_avatar,
+        avatar: '',
         position: 0
     })
 
     const [cpu2, setCpu2] = useState({
         name: "cpu2",
-        avatar: game.cpu2_avatar,
+        avatar: '',
         position: 0
     })
 
     const [cpu3, setCpu3] = useState({
         name: "cpu3",
-        avatar: game.cpu3_avatar,
+        avatar: '',
         position: 0
     })
 
     const navigate = useNavigate()
 
-// useEffect(()=>{
-//     if (game){
-//         console.log(game.player_avater)
-//         setPlayer({
-//             name: "player",
-//             avatar: game.player_avatar,
-//             position: game.player_position
-//         })
+useEffect(()=>{
+    if (game){
+        console.log(game.player_avater)
+        setPlayer({
+            name: "player",
+            avatar: game.player_avatar,
+            position: game.player_position
+        })
     
-//         setCpu1({
-//             name: "cpu1",
-//             avatar: game.cpu1_avatar,
-//             position: game.cpu1_position
-//         })
+        setCpu1({
+            name: "cpu1",
+            avatar: game.cpu1_avatar,
+            position: game.cpu1_position
+        })
         
-//         setCpu2({
-//             name: "cpu2",
-//             avatar: game.cpu2_avatar,
-//             position: game.cpu2_position
-//         })
+        setCpu2({
+            name: "cpu2",
+            avatar: game.cpu2_avatar,
+            position: game.cpu2_position
+        })
     
-//         setCpu3({
-//             name: "cpu3",
-//             avatar: game.cpu3_avatar,
-//             position: game.cpu3_position
-//         })
-//     } else {
-//         alert('You must create a new game or load an existing game to play.')
-//         navigate('/')
-//     }
-// }, [])
+        setCpu3({
+            name: "cpu3",
+            avatar: game.cpu3_avatar,
+            position: game.cpu3_position
+        })
+    } else {
+        alert('You must create a new game or load an existing game to play.')
+        navigate('/')
+    }
+}, [])
 
-
-    const activePlayers = [
-        player, cpu1, cpu2, cpu3
-    ]
-
-    const whoIsWinning = [
-        player.position, cpu1.position, cpu2.position, cpu3.position
-    ]
-
-
-    const assignPositions = activePlayers.map((player)=>{
-            return <div key={player.name} className={`space-${player.name}-${player.position}`}>
-            <img className="avatar" src={player.avatar}/>
-        </div>
+function handleSave(){
+    fetch(`/games/${game.id}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
+    }).then(r => {
+        if(r.ok){
+            r.json().then( data=> console.log(data))
+        } else{
+            r.json().then(console.log('error saving game'))
+        }
     })
+}
+
+
+
 
     function handleRoll(){
        
@@ -129,21 +132,22 @@ function Game({game}){
         })
     }
 
-    function handleSave(){
-        fetch(`/games/${game.id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
-        }).then(r => {
-            if(r.ok){
-                r.json().then( data=> console.log(data))
-            } else{
-                r.json().then(console.log('error saving game'))
-            }
-        })
-    }
+
+
+    const activePlayers = [
+        player, cpu1, cpu2, cpu3
+    ]
+
+    const whoIsWinning = [
+        player.position, cpu1.position, cpu2.position, cpu3.position
+    ]
+
+
+    const assignPositions = activePlayers.map((player)=>{
+            return <div key={player.name} className={`space-${player.name}-${player.position}`}>
+            <img className="avatar" src={player.avatar}/>
+        </div>
+    })
 
     const positionDisplay = activePlayers.map((player) => {
         let order = whoIsWinning.sort()
