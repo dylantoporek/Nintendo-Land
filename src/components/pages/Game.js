@@ -68,9 +68,13 @@ function Game({game}){
         player, cpu1, cpu2, cpu3
     ]
 
+    const whoIsWinning = [
+        player.position, cpu1.position, cpu2.position, cpu3.position
+    ]
+
 
     const assignPositions = activePlayers.map((player)=>{
-            return <div id={player.name} key={player.name} className={`space-${player.name}-${player.position}`}>
+            return <div key={player.name} className={`space-${player.name}-${player.position}`}>
             <img className="avatar" src={player.avatar}/>
         </div>
     })
@@ -142,9 +146,28 @@ function Game({game}){
     }
 
     const positionDisplay = activePlayers.map((player) => {
-        return <div>
-            <img className='avatar-hub' src={player.avatar}/>
+        let order = whoIsWinning.sort()
+        if (parseInt(player.position) === parseInt(order[order.length - 1])){
+            return <div id={player.name}>
+            {player.name} : 1st Place
         </div>
+
+        } if (parseInt(player.position) === parseInt(order[order.length - 2])){
+            return <div id={player.name}>
+            {player.name} : 2nd Place
+        </div>
+
+        } if (parseInt(player.position) === parseInt(order[order.length - 3])){
+            return <div id={player.name}>
+            {player.name} : 3rd Place
+        </div>
+
+        } else {
+            return <div id={player.name}>
+            {player.name} : 4th Place
+        </div>
+        }
+        
     })
 
     return(
@@ -152,6 +175,10 @@ function Game({game}){
             <img id='dice' src={dice} onClick={handleRoll}/>
             <div id="game-board">
                 {assignPositions}
+            </div>
+
+            <div id='hub'>
+                {positionDisplay}
             </div>
             <button id='save-game-button' onClick={handleSave}>Save Game</button>
             <img src={board}></img>
