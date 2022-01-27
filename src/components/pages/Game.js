@@ -68,10 +68,10 @@ useEffect(()=>{
             position: game.cpu3_position
         })
 
-        setPlayerMove([game.player_position])
-        setCpu1Move([game.cpu1_position])
-        setCpu2Move([game.cpu2_position])
-        setCpu3Move([game.cpu3_position])
+        setPlayerMove(game.player_position)
+        setCpu1Move(game.cpu1_position)
+        setCpu2Move(game.cpu2_position)
+        setCpu3Move(game.cpu3_position)
     } else {
         alert('You must create a new game or load an existing game to play.')
         navigate('/')
@@ -91,7 +91,7 @@ function handleSave(){
           body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
     }).then(r => {
         if(r.ok){
-            r.json().then( data=> console.log(data))
+            r.json().then( data=> alert('Game saved!'))
         } else{
             r.json().then(console.log('error saving game'))
         }
@@ -179,8 +179,8 @@ function handleSave(){
 
     const assignPositions = activePlayers.map((player)=>{
             if(player.name === "player"){
-                for(let i = player.position; i < playerMove + 1; i++){
-                    console.log(`space-${player.name}-${i}`)
+                console.log("player move", playerMove)
+                for(let i = player.position; i <= playerMove; i++){
                     return <div key={player.name} className={`space-${player.name}-${i}`}>
                         <img className="avatar" src={player.avatar}/>
                     </div>
@@ -199,22 +199,22 @@ function handleSave(){
         const order = whoIsWinning.sort((a,b)=> a - b)
         if (parseInt(player.position) === parseInt(order[order.length - 1])){
             return <div id={player.name}>
-                1st Place
+                1st
         </div>
 
         } if (parseInt(player.position) === parseInt(order[order.length - 2])){
             return <div id={player.name}>
-                2nd Place
+                2nd
         </div>
 
         } if (parseInt(player.position) === parseInt(order[order.length - 3])){
             return <div id={player.name}>
-                3rd Place
+                3rd
         </div>
 
         } else {
             return <div id={player.name}>
-                4th Place
+                4th
         </div>
         }
         
