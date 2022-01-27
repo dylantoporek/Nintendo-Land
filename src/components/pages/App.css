@@ -441,10 +441,17 @@ left: -10px;
 #save-game-button{
   position: absolute;
   background-color: white;
+  border-color: transparent;
   border-radius: 20%;
   z-index: 1000;
-  top: 670px;
-  left: 1220px;
+  top: 660px;
+  left: 1210px;
+  width: 100px;
+}
+
+#save-game-img{
+  max-width: 80%;
+  max-height: 80%;
 }
 
 #hub{
@@ -459,29 +466,61 @@ left: -10px;
 #player{
   position: absolute;
   font-weight: bold;
-  left: 10px;
-  top: 10px;
+  left: 30px;
+  top: 40px;
 }
 
 #cpu1{
   position: absolute;
-  left: 220px;
+  left: 260px;
   font-weight: bold;
-  top: 10px;
+  top: 40px;
 }
 
 #cpu2{
   position: absolute;
   font-weight: bold;
-  top: 140px;
-  left: 10px;
+  top: 170px;
+  left: 30px;
 }
 
 #cpu3{
   position: absolute;
   font-weight: bold;
-  top: 140px;
-  left: 220px;
+  top: 170px;
+  left: 260px;
+}
+
+#game-player-label{
+  position: absolute;
+  max-height: 8%;
+  max-width: 8%;
+  top: 500px;
+  left: 1090px;
+}
+
+#game-cpu1-label{
+  position: absolute;
+  max-height: 8%;
+  max-width: 8%;
+  top: 500px;
+  left: 1320px;
+}
+
+#game-cpu2-label{
+  position: absolute;
+  max-height: 8%;
+  max-width: 8%;
+  top: 630px;
+  left: 1090px;
+}
+
+#game-cpu3-label{
+  position: absolute;
+  max-height: 8%;
+  max-width: 8%;
+  top: 630px;
+  left: 1320px;
 }
 
 

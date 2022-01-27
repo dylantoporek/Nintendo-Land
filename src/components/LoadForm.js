@@ -16,6 +16,7 @@ function LoadForm({setGame, setTogLoadGame}){
               r.json().then((data)=> console.log(data))
             }
           })
+
     }, [])
 
     function handleLoad(e){
@@ -46,8 +47,10 @@ function LoadForm({setGame, setTogLoadGame}){
        return foundFile
     }
 
+
+
     const loadDisplay = loadFiles.map((file) =>{
-        return <div className='load-files' key={file.id}>
+            return <div className='load-files' key={file.id}>
             <p className="save-files">Save File {file.id}</p>
             <div id="load-game-avatar-container">
             <img className="save-files-avatar" src={file.player_avatar}></img>
@@ -63,6 +66,8 @@ function LoadForm({setGame, setTogLoadGame}){
                 <img className='delete-game-img' src={deletegame}  data-id={file.id}/>
             </button>
         </div>
+            
+        
     })
 
     return (

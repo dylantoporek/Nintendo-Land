@@ -7,11 +7,12 @@ import playerlabel from '../pages/playerlabel.png'
 import cpu1label from '../pages/cpu1label.png'
 import cpu2label from '../pages/cpu2label.png'
 import cpu3label from '../pages/cpu3label.png'
+import save from '../pages/save.png'
 
 function Game({game}){
     const [player, setPlayer] = useState({
         name: "player",
-        avatar: "",
+        avatar: '',
         position: 0
     })
 
@@ -33,11 +34,16 @@ function Game({game}){
         position: 0
     })
 
+    const [playerMove, setPlayerMove] = useState(0)
+    const [cpu1Move, setCpu1Move] = useState([0])
+    const [cpu2Move, setCpu2Move] = useState([0])
+    const [cpu3Move, setCpu3Move] = useState([0])
+
+
     const navigate = useNavigate()
 
 useEffect(()=>{
     if (game){
-        console.log(game.player_avatar)
         setPlayer({
             name: "player",
             avatar: game.player_avatar,
@@ -61,11 +67,20 @@ useEffect(()=>{
             avatar: game.cpu3_avatar,
             position: game.cpu3_position
         })
+
+        setPlayerMove([game.player_position])
+        setCpu1Move([game.cpu1_position])
+        setCpu2Move([game.cpu2_position])
+        setCpu3Move([game.cpu3_position])
     } else {
         alert('You must create a new game or load an existing game to play.')
         navigate('/')
     }
+        
+    
 }, [])
+
+
 
 function handleSave(){
     fetch(`/games/${game.id}`, {
@@ -83,31 +98,41 @@ function handleSave(){
     })
 }
 
-
-
-
     function handleRoll(){
        
         setTimeout(playerRoll, 1000)
         setTimeout(cpu1Roll, 2000)
         setTimeout(cpu2Roll, 3000)
         setTimeout(cpu3Roll, 4000)
-        
-    }
-
-    function checkBoardSpaceEffect(){
-        console.log(activePlayers)
     }
 
     function playerRoll(){
         let dice = [1, 2, 3, 4, 5, 6]
         let playerRoll = dice[Math.floor(Math.random()*6)]
         let playerMove = player.position + playerRoll
+        let steps = []
+        if (playerRoll === 1){
+            steps = [player.position, player.position+1]
+        }
+        if (playerRoll === 2){
+            steps = [player.position, player.position+1, player.position+2]
+        }
+        if (playerRoll === 3){
+            steps = [player.position, player.position+1, player.position+2, player.position+3]
+        }
+        if (playerRoll === 4){
+            steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4]
+        }
+        if (playerRoll === 5){
+            steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4, player.position+5]
+        } if (playerRoll === 6){
+            steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4, player.position+5, player.position+6]
+        } 
+        setPlayerMove(playerMove)
         setPlayer({
-            ...player, 
+            ...player,
             position: playerMove
-        })
-        
+        })   
     }
 
     function cpu1Roll(){
@@ -137,6 +162,7 @@ function handleSave(){
         setCpu3({
             ...cpu3,
             position: cpu3Move
+
         })
     }
 
@@ -152,31 +178,43 @@ function handleSave(){
 
 
     const assignPositions = activePlayers.map((player)=>{
-            return <div key={player.name} className={`space-${player.name}-${player.position}`}>
-            <img className="avatar" src={player.avatar}/>
-        </div>
+            if(player.name === "player"){
+                for(let i = player.position; i < playerMove + 1; i++){
+                    console.log(`space-${player.name}-${i}`)
+                    return <div key={player.name} className={`space-${player.name}-${i}`}>
+                        <img className="avatar" src={player.avatar}/>
+                    </div>
+                }
+            }else {
+                return <div key={player.name} className={`space-${player.name}-${player.position}`}>
+                <img className="avatar" src={player.avatar}/>
+                </div>
+            }
+            
+        
+                
     })
 
     const positionDisplay = activePlayers.map((player) => {
-        const order = whoIsWinning.sort()
+        const order = whoIsWinning.sort((a,b)=> a - b)
         if (parseInt(player.position) === parseInt(order[order.length - 1])){
             return <div id={player.name}>
-            {player.name} : 1st Place
+                1st Place
         </div>
 
         } if (parseInt(player.position) === parseInt(order[order.length - 2])){
             return <div id={player.name}>
-            {player.name} : 2nd Place
+                2nd Place
         </div>
 
         } if (parseInt(player.position) === parseInt(order[order.length - 3])){
             return <div id={player.name}>
-            {player.name} : 3rd Place
+                3rd Place
         </div>
 
         } else {
             return <div id={player.name}>
-            {player.name} : 4th Place
+                4th Place
         </div>
         }
         
@@ -192,8 +230,14 @@ function handleSave(){
             <div id='hub'>
                 {positionDisplay}
             </div>
-            <button id='save-game-button' onClick={handleSave}>Save Game</button>
+            <button id='save-game-button' onClick={handleSave}>
+                <img id='save-game-img' src={save}/>
+            </button>
             <img src={board}></img>
+            <img id='game-player-label' src={playerlabel}/>
+            <img id='game-cpu1-label' src={cpu1label}/>
+            <img id='game-cpu2-label' src={cpu2label}/>
+            <img id='game-cpu3-label' src={cpu3label}/>
         </div>
     )
 }
