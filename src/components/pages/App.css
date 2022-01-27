@@ -2,7 +2,7 @@
 #login-form{
   position: absolute;
   top: 200px;
-  left: 500px;
+  left: 560px;
 }
 
 #username-label{
@@ -23,13 +23,13 @@
   position: relative;
   max-height: 20%;
   max-width: 20%;
-  left: -347px;
+  left: -341px;
   top: 10px;
 }
 
 #password-input{
   position: relative;
-  left: -340px;
+  left: -330px;
   top: 2px;
 }
 
@@ -37,9 +37,9 @@
   position: relative;
   background-color: white;
   border-color: transparent;
-  left: -600px;
+  left: -595px;
   width: 200px;
-  top: 100px;
+  top: 150px;
   text-shadow: none;
 }
 
@@ -51,9 +51,9 @@
 #signup-link{
   position: relative;
   top: 500px;
-  left: 550px;
-  max-width: 20%;
-  max-height: 20%
+  left: 460px;
+  max-width: 25%;
+  max-height: 25%
 }
 
 #take-to-sign-up{
@@ -61,8 +61,8 @@
   background-color: white;
   border-color: transparent;
   width: 150px;
-  top: 505px;
-  left: 560px;
+  top: 503px;
+  left: 470px;
 }
 
 #sign-me-up{
@@ -73,7 +73,7 @@
 #signup-form{
   position: absolute;
   top: 200px;
-  left: 600px;
+  left: 560px;
 }
 
 #signup-username-label{
@@ -91,30 +91,30 @@
 
 #signup-password-label{
   position: relative;
-  left: -328px;
-  top: 20px;
   max-height: 20%;
   max-width: 20%;
+  left: -341px;
+  top: 10px;
 }
 
 #signup-password{
   position: relative;
-  top: 12px;
-  left: -318px;
+  left: -329px;
+  top: 2px;
 }
 
 #signup-passwordconf-label{
   position: relative;
-  left: -240px;
-  top: 47px;
+  left: -255px;
+  top: 10px;
   max-height: 48%;
   max-width: 48%;
 }
 
 #signup-password_confirmation{
   position: relative;
-  top: 40px;
-  left: -230px;
+  top: 5px;
+  left: -246px;
 }
 
 #signup-submit{
@@ -123,7 +123,7 @@
   border-color: transparent;
   left: -500px;
   width: 200px;
-  top: 150px;
+  top: 120px;
   text-shadow: none;
 }
 
@@ -135,9 +135,9 @@
 #login-link{
   position: relative;
   top: 500px;
-  left: 550px;
-  max-width: 20%;
-  max-height: 20%
+  left: 470px;
+  max-width: 25%;
+  max-height: 25%
 }
 
 #take-to-log-in{
@@ -146,7 +146,7 @@
   border-color: transparent;
   width: 150px;
   top: 505px;
-  left: 550px;
+  left: 460px;
   text-shadow: none;
 }
 
@@ -162,7 +162,7 @@
   display: flex;
   flex-direction: row;
   top: 350px;
-  left: 100px;
+  left: 135px;
 }
 
 #start-new-game{
@@ -197,13 +197,13 @@ height: 10%;
 #p1-select{
 position: relative;
 top: 120px;
-left: -20px;
+left: -10px;
 }
 
 #cpu1-label{
   position: relative;
   top: 70px;
-  left: 160px;
+  left: 150px;
   width: 10%;
   height: 10%;
 }
@@ -211,13 +211,13 @@ left: -20px;
 #cpu1-select{
   position: relative;
   top: 120px;
-  left: 55px;
+  left: 53px;
 }
 
 #cpu2-label{
   position: relative;
   top: 70px;
-  left: 220px;
+  left: 235px;
   width: 10%;
   height: 10%;
 }
@@ -225,13 +225,13 @@ left: -20px;
 #cpu2-select{
   position: relative;
   top: 120px;
-  left: 105px;
+  left: 125px;
 }
 
 #cpu3-label{
   position: relative;
   top: 70px;
-  left: 280px;
+  left: 320px;
   width: 10%;
   height: 10%;
 }
@@ -239,7 +239,7 @@ left: -20px;
 #cpu3-select{
   position: relative;
   top: 120px;
-  left: 165px;
+  left: 210px;
 }
 
 
@@ -250,7 +250,7 @@ left: -20px;
   top: 150px;
   width: 500px;
   height: 150px;
-  left: 170px;
+  left: 210px;
 }
 
 .avatar-preview{
@@ -271,17 +271,18 @@ left: -20px;
   top: 150px;
   padding-top: 10px;
   padding-bottom: 80px;
-  left: 90px;
+  left: 165px;
   border-color: black;
   border-style: solid;
   z-index: 1000000000;
-  border-radius: 20%;
 }
 
 .save-files{
   position: relative;
-  left: 10px;
+  left: 20px;
   font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 
 #load-game-avatar-container{
@@ -291,15 +292,16 @@ left: -20px;
 
 .save-files-avatar{
   position: relative;
+  top: -10px;
   max-width: 80px;
   max-height: 100px;
-  padding-right: 150px;
+  padding-right: 130px;
 }
 
 .load-game-submits{
   position: relative;
-  left: 1000px;
-  top: -110px;
+  left: 900px;
+  top: -130px;
   max-width: 100px;
   max-height: 40px;
   background-color: white;
@@ -313,8 +315,8 @@ left: -20px;
 
 .load-game-deletes{
   position: relative;
-  left: 1000px;
-  top: -60px;
+  left: 900px;
+  top: -70px;
   max-width: 100px;
   max-height: 40px;
   background-color: white;
@@ -339,7 +341,7 @@ left: -20px;
   position: relative;
   top: 200px;
   width: 400px;
-  left: 570px;
+  left: 510px;
   background-color: white;
   border-color: transparent;
 }
@@ -352,7 +354,7 @@ left: -20px;
 #home-load-game-button{
   position: relative;
   top: 380px;
-  left: 170px;
+  left: 110px;
   width: 400px;
   background-color: white;
   border-color: transparent;

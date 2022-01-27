@@ -48,7 +48,7 @@ function LoadForm({setGame, setTogLoadGame}){
 
     const loadDisplay = loadFiles.map((file) =>{
         return <div className='load-files' key={file.id}>
-            <p className="save-files">save file {file.id}</p>
+            <p className="save-files">Save File {file.id}</p>
             <div id="load-game-avatar-container">
             <img className="save-files-avatar" src={file.player_avatar}></img>
             <img className="save-files-avatar" src={file.cpu1_avatar}></img>
