@@ -457,6 +457,7 @@ left: -10px;
 #hub{
   position: absolute;
   background-color: white;
+  opacity: 80%;
   height: 210px;
   width: 350px;
   top: 490px;

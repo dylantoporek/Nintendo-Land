@@ -8,8 +8,10 @@ import cpu1label from '../pages/cpu1label.png'
 import cpu2label from '../pages/cpu2label.png'
 import cpu3label from '../pages/cpu3label.png'
 import save from '../pages/save.png'
+import Dice from "react-dice-roll";
 
 function Game({game}){
+
     const [player, setPlayer] = useState({
         name: "player",
         avatar: '',
@@ -34,11 +36,12 @@ function Game({game}){
         position: 0
     })
 
-    const [playerMove, setPlayerMove] = useState(0)
-    const [cpu1Move, setCpu1Move] = useState([0])
-    const [cpu2Move, setCpu2Move] = useState([0])
-    const [cpu3Move, setCpu3Move] = useState([0])
-
+    const [move, setMove] = useState({
+        player: false,
+        cpu1: false,
+        cpu2: false,
+        cpu3: false,
+    })
 
     const navigate = useNavigate()
 
@@ -68,10 +71,7 @@ useEffect(()=>{
             position: game.cpu3_position
         })
 
-        setPlayerMove(game.player_position)
-        setCpu1Move(game.cpu1_position)
-        setCpu2Move(game.cpu2_position)
-        setCpu3Move(game.cpu3_position)
+        
     } else {
         alert('You must create a new game or load an existing game to play.')
         navigate('/')
@@ -79,6 +79,8 @@ useEffect(()=>{
         
     
 }, [])
+
+
 
 
 
@@ -98,17 +100,31 @@ function handleSave(){
     })
 }
 
-    function handleRoll(){
+    function handleRoll(roll){
+        const makePromise = (callback, player) => {
+            return new Promise(function(resolve, reject){
+                setTimeout(() => {
+                    player ? callback(roll) : callback()
+                    resolve("turn done")
+                }, 2000)
+            })
+        }
+          
+        makePromise(playerRoll, true) 
+        .then(()=> {
+            return makePromise(cpu1Roll, false)
+        }).then(()=> {
+            return makePromise(cpu2Roll, false)
+        }).then(()=> {
+            return makePromise(cpu3Roll, false)
+        })
+
        
-        setTimeout(playerRoll, 1000)
-        setTimeout(cpu1Roll, 2000)
-        setTimeout(cpu2Roll, 3000)
-        setTimeout(cpu3Roll, 4000)
     }
 
-    function playerRoll(){
+    function playerRoll(roll){
         let dice = [1, 2, 3, 4, 5, 6]
-        let playerRoll = dice[Math.floor(Math.random()*6)]
+        let playerRoll = roll
         let playerMove = player.position + playerRoll
         let steps = []
         if (playerRoll === 1){
@@ -128,12 +144,17 @@ function handleSave(){
         } if (playerRoll === 6){
             steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4, player.position+5, player.position+6]
         } 
-        setPlayerMove(playerMove)
-        setPlayer({
-            ...player,
-            position: playerMove
-        })   
+
+        // console.log(steps)
+        for( let i = 0; i < steps.length; i++){
+            // console.log(steps[i])
+            setTimeout(() => setPlayer((player) => ({
+                ...player,
+                position: steps[i]
+            })), (300 * (i+1)))
+        }       
     }
+
 
     function cpu1Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
@@ -167,7 +188,7 @@ function handleSave(){
     }
 
 
-
+    console.log(player)
     const activePlayers = [
         player, cpu1, cpu2, cpu3
     ]
@@ -178,51 +199,33 @@ function handleSave(){
 
 
     const assignPositions = activePlayers.map((player)=>{
-            if(player.name === "player"){
-                console.log("player move", playerMove)
-                for(let i = player.position; i <= playerMove; i++){
-                    return <div key={player.name} className={`space-${player.name}-${i}`}>
-                        <img className="avatar" src={player.avatar}/>
-                    </div>
-                }
-            }else {
                 return <div key={player.name} className={`space-${player.name}-${player.position}`}>
                 <img className="avatar" src={player.avatar}/>
                 </div>
-            }
-            
-        
-                
     })
 
     const positionDisplay = activePlayers.map((player) => {
+        
         const order = whoIsWinning.sort((a,b)=> a - b)
         if (parseInt(player.position) === parseInt(order[order.length - 1])){
-            return <div id={player.name}>
-                1st
-        </div>
-
+            return <div id={player.name}>1st</div>
         } if (parseInt(player.position) === parseInt(order[order.length - 2])){
-            return <div id={player.name}>
-                2nd
-        </div>
-
+            return <div id={player.name}>2nd</div>
         } if (parseInt(player.position) === parseInt(order[order.length - 3])){
-            return <div id={player.name}>
-                3rd
-        </div>
-
+            return <div id={player.name}>3rd</div>
         } else {
-            return <div id={player.name}>
-                4th
-        </div>
+            return <div id={player.name}>4th</div>
         }
         
     })
 
     return(
         <div>
-            <img id='dice' src={dice} onClick={handleRoll}/>
+            {/* <img id='dice' src={dice} onClick={handleRoll}/> */}
+            <div id='dice'>
+            <Dice onRoll={handleRoll} size={80} />
+            </div>
+            
             <div id="game-board">
                 {assignPositions}
             </div>
@@ -238,6 +241,7 @@ function handleSave(){
             <img id='game-cpu1-label' src={cpu1label}/>
             <img id='game-cpu2-label' src={cpu2label}/>
             <img id='game-cpu3-label' src={cpu3label}/>
+            
         </div>
     )
 }
