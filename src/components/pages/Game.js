@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './App.css'
 import board from '../pages/board3.0.png'
-import dice from '../pages/dice.png'
 import {useNavigate} from 'react-router-dom'
 import playerlabel from '../pages/playerlabel.png'
 import cpu1label from '../pages/cpu1label.png'
@@ -11,6 +10,8 @@ import save from '../pages/save.png'
 import Dice from "react-dice-roll";
 
 function Game({game}){
+
+    const [checkSpace, setCheckSpace] = useState(false)
 
     const [player, setPlayer] = useState({
         name: "player",
@@ -36,12 +37,6 @@ function Game({game}){
         position: 0
     })
 
-    const [move, setMove] = useState({
-        player: false,
-        cpu1: false,
-        cpu2: false,
-        cpu3: false,
-    })
 
     const navigate = useNavigate()
 
@@ -81,7 +76,18 @@ function Game({game}){
     }, [])
 
 
-
+    useEffect(()=> {
+        if(checkSpace){
+            setTimeout(checkSpaceEffect(player), 1000)
+            setTimeout(checkSpaceEffect(cpu1), 2000)
+            setTimeout(checkSpaceEffect(cpu2), 3000)
+            setTimeout(checkSpaceEffect(cpu3), 4000)
+            setTimeout(setCheckSpace(false), 5000)
+        } else{
+            return null
+        }
+        
+    }, [checkSpace])
 
 
     function handleSave(){
@@ -101,31 +107,70 @@ function Game({game}){
     }
 
     function handleRoll(roll){
-        const makePromise = (callback, player) => {
+        const makeTurnPromise = (callback, player) => {
             return new Promise(function(resolve, reject){
                 setTimeout(() => {
                     player ? callback(roll) : callback()
-                    resolve("turn done")
+                    resolve("resolved")
                 }, 2000)
             })
         }
           
-        makePromise(playerRoll, true) 
+        makeTurnPromise(playerRoll, true) 
         .then(()=> {
-            return makePromise(cpu1Roll, false)
+            return makeTurnPromise(cpu1Roll, false)
         }).then(()=> {
-            return makePromise(cpu2Roll, false)
+            return makeTurnPromise(cpu2Roll, false)
         }).then(()=> {
-            return makePromise(cpu3Roll, false)
+            return makeTurnPromise(cpu3Roll, false)
+        }).then(()=> {
+            setTimeout(setCheckSpace(true), 10000)
         })
+            
+    }
 
-       
+    function checkSpaceEffect(obj){
+        console.log(obj.position)
+        if (parseInt(obj.position) === 3){
+            alert("Pipe")
+            // move from 3 to 7
+        }
+        if (parseInt(obj.position) === 5){
+            alert("Bowser")
+            // move from 5 to 4
+        }
+        if (parseInt(obj.position) === 11){
+            alert("Bokoblins")
+            // move from 11 to 10
+        }
+        if (parseInt(obj.position) === 15){
+            alert("Nurse Joy")
+            //move from 15 to 19
+        }
+        if (parseInt(obj.position) === 18){
+            alert("Wild Pokemon")
+            // move from 18 to 17
+        }
+        if (parseInt(obj.position) === 22){
+            alert("Slowpoke")
+            // move from 22 to 21
+        }
+        if (parseInt(obj.position) === 28){
+            alert("Piranha Plant")
+            // move form 28 to 27
+        }
+        if (parseInt(obj.position) === 32){
+            alert("Wendell")
+            // move from 32 to 31
+        }
+        if (parseInt(obj.position) === 37){
+            alert("Banana")
+            // move from 37 to 36
+        }
     }
 
     function playerRoll(roll){
-        let dice = [1, 2, 3, 4, 5, 6]
         let playerRoll = roll
-        let playerMove = player.position + playerRoll
         let steps = []
         if (playerRoll === 1){
             steps = [player.position, player.position+1]
@@ -141,34 +186,16 @@ function Game({game}){
         }
         if (playerRoll === 5){
             steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4, player.position+5]
-        } if (playerRoll === 6){
-            steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4, player.position+5, player.position+6]
         } 
-
-        // if(steps[steps.length - 1] === 3){
-        //     alert("Pipe")
-        // }
-        // if (steps[steps.length - 1] === 5){
-        //     alert("Bowser")
-        // }
-        // if (steps[steps.length - 1] === 11){
-        //     alert("Bokoblins")
-        // }
-        // if (steps[steps.length - 1] === 15){
-        //     alert("Nurse Joy")
-        // }
-        // if (steps[steps.length - 1] === 18){
-        //     console.log("bad effect Space 18")
-        // }
-        // if (steps[steps.length - 1] === 22){
-        //     console.log("bad effect Space 22")
-        // } 
+        if (playerRoll === 6){
+            steps = [player.position, player.position+1, player.position+2, player.position+3, player.position+4, player.position+5, player.position+6]
+        }
 
         for( let i = 0; i < steps.length; i++){
             setTimeout(() => setPlayer((player) => ({
                 ...player,
                 position: steps[i]
-            })), (300 * (i+1)))
+            })), (250 * (i+1)))
         } 
              
     }
@@ -177,7 +204,6 @@ function Game({game}){
     function cpu1Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
         let cpu1Roll = dice[Math.floor(Math.random()*6)]
-        let cpu1Move = cpu1.position + cpu1Roll
         let steps = []
         if (cpu1Roll === 1){
             steps = [cpu1.position, cpu1.position+1]
@@ -193,34 +219,16 @@ function Game({game}){
         }
         if (cpu1Roll === 5){
             steps = [cpu1.position, cpu1.position+1, cpu1.position+2, cpu1.position+3, cpu1.position+4, cpu1.position+5]
-        } if (cpu1Roll === 6){
+        } 
+        if (cpu1Roll === 6){
             steps = [cpu1.position, cpu1.position+1, cpu1.position+2, cpu1.position+3, cpu1.position+4, cpu1.position+5, cpu1.position+6]
         }
-
-        // if (steps[steps.length - 1] === 3){
-        //     alert("Pipe")
-        // }
-        // if (steps[steps.length - 1] === 5){
-        //     alert("Bowser")
-        // }
-        // if (steps[steps.length - 1] === 11){
-        //     alert("Bokoblins")
-        // }
-        // if (steps[steps.length - 1] === 15){
-        //     alert("Nurse Joy")
-        // }
-        // if (steps[steps.length - 1] === 18){
-        //     console.log("bad effect Space 18")
-        // }
-        // if (steps[steps.length - 1] === 22){
-        //     console.log("bad effect Space 22")
-        // }
         
         for( let i = 0; i < steps.length; i++){
             setTimeout(() => setCpu1((cpu1) => ({
                 ...cpu1,
                 position: steps[i]
-            })), (300 * (i+1)))
+            })), (250 * (i+1)))
         } 
         
     }
@@ -228,7 +236,6 @@ function Game({game}){
     function cpu2Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
         let cpu2Roll = dice[Math.floor(Math.random()*6)]
-        let cpu2Move = cpu2.position + cpu2Roll
         let steps = []
         if (cpu2Roll === 1){
             steps = [cpu2.position, cpu2.position+1]
@@ -244,34 +251,16 @@ function Game({game}){
         }
         if (cpu2Roll === 5){
             steps = [cpu2.position, cpu2.position+1, cpu2.position+2, cpu2.position+3, cpu2.position+4, cpu2.position+5]
-        } if (cpu2Roll === 6){
+        } 
+        if (cpu2Roll === 6){
             steps = [cpu2.position, cpu2.position+1, cpu2.position+2, cpu2.position+3, cpu2.position+4, cpu2.position+5, cpu2.position+6]
         } 
-
-        // if (steps[steps.length - 1] === 3){
-        //     alert("Pipe")
-        // }
-        // if (steps[steps.length - 1] === 5){
-        //     alert("Bowser")
-        // }
-        // if (steps[steps.length - 1] === 11){
-        //     alert("Bokoblins")
-        // }
-        // if (steps[steps.length - 1] === 15){
-        //     alert("Nurse Joy")
-        // }
-        // if (steps[steps.length - 1] === 18){
-        //     console.log("bad effect Space 18")
-        // }
-        // if (steps[steps.length - 1] === 22){
-        //     console.log("bad effect Space 22")
-        // }
 
         for( let i = 0; i < steps.length; i++){
             setTimeout(() => setCpu2((cpu2) => ({
                 ...cpu2,
                 position: steps[i]
-            })), (300 * (i+1)))
+            })), (250 * (i+1)))
         } 
         
     }
@@ -279,7 +268,6 @@ function Game({game}){
     function cpu3Roll(){
         let dice = [1, 2, 3, 4, 5, 6]
         let cpu3Roll = dice[Math.floor(Math.random()*6)]
-        let cpu3Move = cpu3.position + cpu3Roll
         let steps = []
         if (cpu3Roll === 1){
             steps = [cpu3.position, cpu3.position+1]
@@ -295,34 +283,16 @@ function Game({game}){
         }
         if (cpu3Roll === 5){
             steps = [cpu3.position, cpu3.position+1, cpu3.position+2, cpu3.position+3, cpu3.position+4, cpu3.position+5]
-        } if (cpu3Roll === 6){
+        } 
+        if (cpu3Roll === 6){
             steps = [cpu3.position, cpu3.position+1, cpu3.position+2, cpu3.position+3, cpu3.position+4, cpu3.position+5, cpu3.position+6]
         } 
-
-        // if(steps[steps.length - 1] === 3){
-        //     alert("Pipe")
-        // }
-        // if (steps[steps.length - 1] === 5){
-        //     alert("Bowser")
-        // }
-        // if (steps[steps.length - 1] === 11){
-        //     alert("Bokoblins")
-        // }
-        // if (steps[steps.length - 1] === 15){
-        //     alert("Nurse Joy")
-        // }
-        // if (steps[steps.length - 1] === 18){
-        //     console.log("bad effect Space 18")
-        // }
-        // if (steps[steps.length - 1] === 22){
-        //     console.log("bad effect Space 22")
-        // }
 
         for( let i = 0; i < steps.length; i++){
             setTimeout(() => setCpu3((cpu3) => ({
                 ...cpu3,
                 position: steps[i]
-            })), (300 * (i+1)))
+            })), (250 * (i+1)))
         } 
     }
 
@@ -336,9 +306,9 @@ function Game({game}){
 
 
     const assignPositions = activePlayers.map((player)=>{
-                return <div key={player.name} className={`space-${player.name}-${player.position}`}>
+        return <div key={player.name} className={`space-${player.name}-${player.position}`}>
                 <img className="avatar" src={player.avatar}/>
-                </div>
+        </div>
     })
 
     const positionDisplay = activePlayers.map((player) => {

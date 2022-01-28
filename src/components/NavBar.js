@@ -15,20 +15,10 @@ function NavBar({setUser, togLoadGame, togNewGame, setTogLoadGame, setTogNewGame
           }
         });
       }
-
-      function handleRelocate(){
-        if (togLoadGame){
-            setTogLoadGame(false)
-        } if (togNewGame){
-            setTogNewGame(false)
-        }else{
-            return null
-        }
-      }
       
     return (
         <div id='nav'>
-            <NavLink id='link-home' to="/" onClick={handleRelocate}>
+            <NavLink id='link-home' to="/">
                 <img id='nav-home-icon' src={home}/>
             </NavLink>
             <NavLink to="/game"></NavLink>
