@@ -338,7 +338,7 @@ left: -10px;
 /* Home Page//////////////////////////////////////////////////////////////////// */
 
 #home-new-game-button{
-  position: relative;
+  position: absolute;
   top: 200px;
   width: 400px;
   left: 510px;
@@ -352,9 +352,9 @@ left: -10px;
 }
 
 #home-load-game-button{
-  position: relative;
+  position: absolute;
   top: 380px;
-  left: 110px;
+  left: 510px;
   width: 400px;
   background-color: white;
   border-color: transparent;
@@ -434,7 +434,7 @@ left: -10px;
   max-width: 80px;
   position: absolute;
   z-index: 1000;
-  top: 545px;
+  top: 555px;
   left: 1220px;
 }
 
@@ -466,30 +466,54 @@ left: -10px;
 
 #player{
   position: absolute;
-  font-weight: bold;
-  left: 50px;
-  top: 40px;
+  left: 105px;
+  top: -5px;
+  max-height: 30%;
+  max-width: 30%;
+}
+
+.place1{
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.place2{
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.place3{
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.place4{
+  max-height: 50%;
+  max-width: 50%;
 }
 
 #cpu1{
   position: absolute;
-  left: 280px;
-  font-weight: bold;
-  top: 40px;
+  left: 300px;
+  top: -3px;
+  height: 100px;
+  width: 100px;
 }
 
 #cpu2{
   position: absolute;
-  font-weight: bold;
-  top: 180px;
-  left: 50px;
+  top: 165px;
+  left: 80px;
+  max-height: 30%;
+  max-width: 30%;
 }
 
 #cpu3{
   position: absolute;
-  font-weight: bold;
-  top: 180px;
-  left: 280px;
+  top: 165px;
+  left: 295px;
+  height: 100px;
+  width: 100px;
 }
 
 #game-player-label{
@@ -497,7 +521,7 @@ left: -10px;
   max-height: 8%;
   max-width: 8%;
   top: 500px;
-  left: 1090px;
+  left: 1080px;
 }
 
 #game-cpu1-label{
@@ -505,23 +529,23 @@ left: -10px;
   max-height: 8%;
   max-width: 8%;
   top: 500px;
-  left: 1320px;
+  left: 1290px;
 }
 
 #game-cpu2-label{
   position: absolute;
   max-height: 8%;
   max-width: 8%;
-  top: 640px;
-  left: 1090px;
+  top: 670px;
+  left: 1070px;
 }
 
 #game-cpu3-label{
   position: absolute;
   max-height: 8%;
   max-width: 8%;
-  top: 640px;
-  left: 1320px;
+  top: 670px;
+  left: 1290px;
 }
 
 

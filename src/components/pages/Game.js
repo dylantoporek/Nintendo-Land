@@ -8,6 +8,16 @@ import cpu2label from '../pages/cpu2label.png'
 import cpu3label from '../pages/cpu3label.png'
 import save from '../pages/save.png'
 import Dice from "react-dice-roll";
+import dice1 from '../pages/dice1.png'
+import dice2 from '../pages/dice2.png'
+import dice3 from '../pages/dice3.png'
+import dice4 from '../pages/dice4.png'
+import dice5 from '../pages/dice5.png'
+import dice6 from '../pages/dice6.png'
+import place1 from '../pages/place1.png'
+import place2 from '../pages/place2.png'
+import place3 from '../pages/place3.png'
+import place4 from '../pages/place4.png'
 
 function Game({game}){
 
@@ -77,12 +87,31 @@ function Game({game}){
 
 
     useEffect(()=> {
+        console.log(checkSpace)
+
+        const checkSpacePromise = (callback, obj) => {
+            return new Promise(function(resolve, reject){
+                setTimeout(() => {
+                    callback(obj)
+                    resolve("resolved")
+                }, 100)
+            })
+        }
+
         if(checkSpace){
-            setTimeout(checkSpaceEffect(player), 1000)
-            setTimeout(checkSpaceEffect(cpu1), 2000)
-            setTimeout(checkSpaceEffect(cpu2), 3000)
-            setTimeout(checkSpaceEffect(cpu3), 4000)
-            setTimeout(setCheckSpace(false), 5000)
+            checkSpacePromise(checkSpaceEffect, player)
+            .then(()=>{
+                return checkSpacePromise(checkSpaceEffect, cpu1)
+            })
+            .then(()=>{
+                return checkSpacePromise(checkSpaceEffect, cpu2)
+            })
+            .then(()=>{
+                return checkSpacePromise(checkSpaceEffect, cpu3)
+            })
+            .then(()=>{
+                return checkSpacePromise(setCheckSpace, false)
+            })
         } else{
             return null
         }
@@ -111,7 +140,16 @@ function Game({game}){
             return new Promise(function(resolve, reject){
                 setTimeout(() => {
                     player ? callback(roll) : callback()
-                    resolve("resolved")
+                    resolve("blah")
+                }, 2000)
+            })
+        }
+
+        const checkTurnPromise = (callback, obj) => {
+            return new Promise(function(resolve, reject){
+                setTimeout(() => {
+                    callback()
+                    resolve(setCheckSpace(true))
                 }, 2000)
             })
         }
@@ -124,48 +162,308 @@ function Game({game}){
         }).then(()=> {
             return makeTurnPromise(cpu3Roll, false)
         }).then(()=> {
-            setTimeout(setCheckSpace(true), 10000)
+            checkTurnPromise(setCheckSpace, true)
         })
+            
             
     }
 
     function checkSpaceEffect(obj){
-        console.log(obj.position)
+        console.log(obj.name, obj.position)
+        if((parseInt(obj.position) >= 40)){
+            alert(`${obj.name} reached the castle. They win!`)
+        }
         if (parseInt(obj.position) === 3){
-            alert("Pipe")
-            // move from 3 to 7
+            alert(`${obj.name} used a Warp Pipe. Move ahead 3 spaces.`)
+            // move from 4 to 7
+            let effect = 7
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 5){
-            alert("Bowser")
-            // move from 5 to 4
+            alert(`${obj.name} ran into Bowser. Move back 1 space.`)
+            // move from 5 to 2
+            let effect = 2
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 11){
-            alert("Bokoblins")
+            alert(`${obj.name} got attacked by Bokoblins. Move back 1 space.`)
             // move from 11 to 10
+            let effect = 10
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 15){
-            alert("Nurse Joy")
+            alert(`${obj.name} recieved help from Nurse Joy. Move forward 4 spaces.`)
             //move from 15 to 19
+            let effect = 19
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 18){
-            alert("Wild Pokemon")
-            // move from 18 to 17
+            alert(`${obj.name} encountered a wild Pokémon. Move back 1 space.`)
+            // move from 18 to 16
+            let effect = 16
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 22){
-            alert("Slowpoke")
+            alert(`${obj.name} got stuck behind a Slowpoke. Move back 1 space.`)
             // move from 22 to 21
+            let effect = 21
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
+        }if (parseInt(obj.position) === 27){
+            alert(`${obj.name} swang ahead using a vine. Move ahead 2 spaces.`)
+            // move from 27 to 29
+            let effect = 29
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 28){
-            alert("Piranha Plant")
-            // move form 28 to 27
+            alert(`${obj.name} got snapped up by a Piranha Plant. Move back 1 space.`)
+            // move form 28 to 26
+            let effect = 26
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 32){
-            alert("Wendell")
-            // move from 32 to 31
+            alert(`${obj.name} was kicked by a Wild Wendell. Move back 1 space.`)
+            // move from 32 to 30
+            let effect = 30
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
         }
         if (parseInt(obj.position) === 37){
-            alert("Banana")
+            alert(`${obj.name} slipped on a banana. Move back 1 space.`)
             // move from 37 to 36
+            let effect = 36
+            if (obj.name === 'player'){
+                setPlayer({
+                    ...player,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu1'){
+                setCpu1({
+                    ...cpu1,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu2'){
+                setCpu2({
+                    ...cpu2,
+                    position: effect
+                })
+            }
+            if (obj.name === 'cpu3'){
+                setCpu3({
+                    ...cpu3,
+                    position: effect
+                })
+            }
+        }
+        else {
+            return null
         }
     }
 
@@ -195,7 +493,7 @@ function Game({game}){
             setTimeout(() => setPlayer((player) => ({
                 ...player,
                 position: steps[i]
-            })), (250 * (i+1)))
+            })), (200 * (i+1)))
         } 
              
     }
@@ -228,7 +526,7 @@ function Game({game}){
             setTimeout(() => setCpu1((cpu1) => ({
                 ...cpu1,
                 position: steps[i]
-            })), (250 * (i+1)))
+            })), (200 * (i+1)))
         } 
         
     }
@@ -260,7 +558,7 @@ function Game({game}){
             setTimeout(() => setCpu2((cpu2) => ({
                 ...cpu2,
                 position: steps[i]
-            })), (250 * (i+1)))
+            })), (200 * (i+1)))
         } 
         
     }
@@ -292,7 +590,7 @@ function Game({game}){
             setTimeout(() => setCpu3((cpu3) => ({
                 ...cpu3,
                 position: steps[i]
-            })), (250 * (i+1)))
+            })), (200 * (i+1)))
         } 
     }
 
@@ -315,13 +613,21 @@ function Game({game}){
         
         const order = whoIsWinning.sort((a,b)=> a - b)
         if (parseInt(player.position) === parseInt(order[order.length - 1])){
-            return <div id={player.name}>1st</div>
+            return <div id={player.name}>
+                <img className='place1' src={place1}/>
+            </div>
         } if (parseInt(player.position) === parseInt(order[order.length - 2])){
-            return <div id={player.name}>2nd</div>
+            return <div id={player.name}>
+                <img className='place2' src={place2}/>
+            </div>
         } if (parseInt(player.position) === parseInt(order[order.length - 3])){
-            return <div id={player.name}>3rd</div>
+            return <div id={player.name}>
+                <img className='place3' src={place3}/>
+            </div>
         } else {
-            return <div id={player.name}>4th</div>
+            return <div id={player.name}>
+                <img className='place4' src={place4}/>
+            </div>
         }
         
     })
@@ -329,7 +635,7 @@ function Game({game}){
     return(
         <div>
             <div id='dice'>
-            <Dice onRoll={handleRoll} size={80} />
+            <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
             </div>
             
             <div id="game-board">
