@@ -4,6 +4,8 @@ import Login from '../components/pages/Login'
 import NavBar from "./NavBar";
 import Game from "./pages/Game";
 import Home from "./pages/Home";
+import GameForm from "./GameForm";
+import LoadForm from "./LoadForm";
 
 
 function App() {
@@ -55,6 +57,8 @@ function App() {
             path="/game" 
             element={<Game game={game}/>}>
           </Route>
+          <Route path="/new-game" element={<GameForm setGame={setGame}/>}></Route>
+          <Route path="/load-game" element={<LoadForm setGame={setGame}/>}></Route>
           <Route 
             path="/" 
             element={<Home 

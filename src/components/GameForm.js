@@ -6,7 +6,7 @@ import cpu2label from './pages/cpu2label.png'
 import cpu3label from './pages/cpu3label.png'
 import start from './pages/start.png'
 
-function GameForm({setGame , setTogNewGame}){
+function GameForm({setGame}){
     const [playerAvatar, setPlayerAvatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png")
     const [cpu1Avatar, setCpu1Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png")
     const [cpu2Avatar, setCpu2Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png")

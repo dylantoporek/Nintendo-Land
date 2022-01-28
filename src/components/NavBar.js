@@ -32,6 +32,8 @@ function NavBar({setUser, togLoadGame, togNewGame, setTogLoadGame, setTogNewGame
                 <img id='nav-home-icon' src={home}/>
             </NavLink>
             <NavLink to="/game"></NavLink>
+            <NavLink to="/new-game"></NavLink>
+            <NavLink to="/load-game"></NavLink>
             <button id='sign-out-button' onClick={handleLogoutClick}>
                 <img id='sign-out-styler' src={signout}/>
             </button>

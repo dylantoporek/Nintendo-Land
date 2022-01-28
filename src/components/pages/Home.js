@@ -1,27 +1,20 @@
 import React, {useState} from "react";
-import GameForm from '../GameForm'
-import LoadForm from "../LoadForm";
 import newgame from '../pages/newgame.png'
 import loadgame from '../pages/loadgame.png'
+import {useNavigate} from 'react-router-dom'
 
 function Home({setGame, togLoadGame, togNewGame, setTogNewGame, setTogLoadGame}){
 
+    const navigate = useNavigate()
+    
     function handleNGClick(){
-        setTogNewGame(true)
+        navigate('/new-game')
     }
 
     function handleLClick(){
-        setTogLoadGame(true)
+        navigate('/load-game')
     }
 
-    if (togNewGame){
-        return <GameForm setGame={setGame} setTogNewGame={setTogNewGame}/>
-    }
-
-    if (togLoadGame){
-        return <LoadForm setGame={setGame} setTogLoadGame={setTogLoadGame} />
-    }
-    else{
         return(
             <div>
                 <button id='home-new-game-button' onClick={handleNGClick}>
@@ -33,7 +26,6 @@ function Home({setGame, togLoadGame, togNewGame, setTogNewGame, setTogLoadGame})
             </div>
             
         )
-    }
     
 }
 

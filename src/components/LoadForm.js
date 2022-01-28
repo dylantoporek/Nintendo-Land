@@ -3,7 +3,8 @@ import {useNavigate} from "react-router-dom"
 import loadgame from './pages/loadgame.png'
 import deletegame from './pages/deletegame.png'
 
-function LoadForm({setGame, setTogLoadGame}){
+function LoadForm({setGame}){
+    
     const [loadFiles, setLoadFiles] = useState([])
     const navigate = useNavigate()
     useEffect(()=> {
@@ -18,6 +19,7 @@ function LoadForm({setGame, setTogLoadGame}){
           })
 
     }, [])
+
 
     function handleLoad(e){
         const loadGame = findFile(e.target.dataset.id)
@@ -50,24 +52,22 @@ function LoadForm({setGame, setTogLoadGame}){
 
 
     const loadDisplay = loadFiles.map((file) =>{
-            return <div className='load-files' key={file.id}>
-            <p className="save-files">Save File {file.id}</p>
-            <div id="load-game-avatar-container">
-            <img className="save-files-avatar" src={file.player_avatar}></img>
-            <img className="save-files-avatar" src={file.cpu1_avatar}></img>
-            <img className="save-files-avatar" src={file.cpu2_avatar}></img>
-            <img className="save-files-avatar" src={file.cpu3_avatar}></img>
-            </div>
-            
-            <button className='load-game-submits' onClick={handleLoad} value={file.id}>
-                <img className='load-game-img' src={loadgame} data-id={file.id}/>
-            </button>
-            <button className='load-game-deletes' onClick={handleDelete} value={file.id}>
-                <img className='delete-game-img' src={deletegame}  data-id={file.id}/>
-            </button>
-        </div>
-            
-        
+                return <div className='load-files' key={file.id}>
+                <p className="save-files">Save File {file.id}</p>
+                <div id="load-game-avatar-container">
+                <img className="save-files-avatar" src={file.player_avatar}></img>
+                <img className="save-files-avatar" src={file.cpu1_avatar}></img>
+                <img className="save-files-avatar" src={file.cpu2_avatar}></img>
+                <img className="save-files-avatar" src={file.cpu3_avatar}></img>
+                </div>
+                
+                <button className='load-game-submits' onClick={handleLoad} value={file.id}>
+                    <img className='load-game-img' src={loadgame} data-id={file.id}/>
+                </button>
+                <button className='load-game-deletes' onClick={handleDelete} value={file.id}>
+                    <img className='delete-game-img' src={deletegame}  data-id={file.id}/>
+                </button>
+            </div>  
     })
 
     return (
