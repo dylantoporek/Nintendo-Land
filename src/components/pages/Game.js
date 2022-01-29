@@ -120,17 +120,17 @@ function Game({game}){
             .then(()=>{
                 if(parseInt(player.position) < 40){
                     return checkSpacePromise(checkSpaceEffect, cpu1)
-                } 
+                } else return null 
             })
             .then(()=>{
                 if(parseInt(cpu1.position) < 40){
                 return checkSpacePromise(checkSpaceEffect, cpu2)
-                }
+                } else return null 
             })
             .then(()=>{
                 if(parseInt(cpu2.position) < 40){
                 return checkSpacePromise(checkSpaceEffect, cpu3)
-                }
+                } else return null 
             })
             .then(()=>{
                 return checkSpacePromise(setCheckSpace, false)
@@ -186,303 +186,309 @@ function Game({game}){
 
     function checkSpaceEffect(obj){
         let alertName = obj.name.toUpperCase()
-        if((parseInt(obj.position) >= 40)){
-            alert(`${alertName} reached the castle. They win!`)
-            setWinner((winner) =>[...winner, obj])
-            setWinnerTrigger(true)
-            
-        }
-        if (parseInt(obj.position) === 3){
-            alert(`${alertName} used a Warp Pipe. They move ahead 4 spaces.`)
-            // move from 3 to 7
-            let effect = 7
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
+        
+
+        if(!winnerTrigger){
+
+            if((parseInt(obj.position) >= 40)){
+                alert(`${alertName} reached the castle. They win!`)
+                setWinner((winner) =>[...winner, obj])
+                setWinnerTrigger(true)
+                
             }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 3){
+                alert(`${alertName} used a Warp Pipe. They move ahead 4 spaces.`)
+                // move from 3 to 7
+                let effect = 7
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 5){
+                alert(`${alertName} ran into Bowser. They move back 3 spaces.`)
+                // move from 5 to 2
+                let effect = 2
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 11){
+                alert(`${alertName} got attacked by Bokoblins. They move back 1 space.`)
+                // move from 11 to 10
+                let effect = 10
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-        }
-        if (parseInt(obj.position) === 5){
-            alert(`${alertName} ran into Bowser. They move back 3 spaces.`)
-            // move from 5 to 2
-            let effect = 2
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 15){
+                alert(`${alertName} recieved help from Nurse Joy. They move ahead 4 spaces.`)
+                //move from 15 to 19
+                let effect = 19
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 18){
+                alert(`${alertName} encountered a wild Pokémon. They move back 2 spaces.`)
+                // move from 18 to 16
+                let effect = 16
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 22){
+                alert(`${alertName} got stuck behind a Slowpoke. They move back 1 space.`)
+                // move from 22 to 21
+                let effect = 21
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 27){
+                alert(`${alertName} swang ahead using a vine. They move ahead 2 spaces.`)
+                // move from 27 to 29
+                let effect = 29
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-        }
-        if (parseInt(obj.position) === 11){
-            alert(`${alertName} got attacked by Bokoblins. They move back 1 space.`)
-            // move from 11 to 10
-            let effect = 10
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 28){
+                alert(`${alertName} got snapped up by a Piranha Plant. They move back 2 spaces.`)
+                // move form 28 to 26
+                let effect = 26
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 32){
+                alert(`${alertName} was kicked by a Wild Wendell. The move back 2 spaces.`)
+                // move from 32 to 30
+                let effect = 30
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
             }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
+            if (parseInt(obj.position) === 37){
+                alert(`${alertName} slipped on a banana. They move back 1 space.`)
+                // move from 37 to 36
+                let effect = 36
+                if (obj.name === 'player'){
+                    setPlayer({
+                        ...player,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu1'){
+                    setCpu1({
+                        ...cpu1,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu2'){
+                    setCpu2({
+                        ...cpu2,
+                        position: effect
+                    })
+                }
+                if (obj.name === 'cpu3'){
+                    setCpu3({
+                        ...cpu3,
+                        position: effect
+                    })
+                }
+            }   
+            else {
+                return null
             }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        if (parseInt(obj.position) === 15){
-            alert(`${alertName} recieved help from Nurse Joy. They move ahead 4 spaces.`)
-            //move from 15 to 19
-            let effect = 19
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        if (parseInt(obj.position) === 18){
-            alert(`${alertName} encountered a wild Pokémon. They move back 2 spaces.`)
-            // move from 18 to 16
-            let effect = 16
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        if (parseInt(obj.position) === 22){
-            alert(`${alertName} got stuck behind a Slowpoke. They move back 1 space.`)
-            // move from 22 to 21
-            let effect = 21
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }if (parseInt(obj.position) === 27){
-            alert(`${alertName} swang ahead using a vine. They move ahead 2 spaces.`)
-            // move from 27 to 29
-            let effect = 29
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        if (parseInt(obj.position) === 28){
-            alert(`${alertName} got snapped up by a Piranha Plant. They move back 2 spaces.`)
-            // move form 28 to 26
-            let effect = 26
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        if (parseInt(obj.position) === 32){
-            alert(`${alertName} was kicked by a Wild Wendell. The move back 2 spaces.`)
-            // move from 32 to 30
-            let effect = 30
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        if (parseInt(obj.position) === 37){
-            alert(`${alertName} slipped on a banana. They move back 1 space.`)
-            // move from 37 to 36
-            let effect = 36
-            if (obj.name === 'player'){
-                setPlayer({
-                    ...player,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu1'){
-                setCpu1({
-                    ...cpu1,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu2'){
-                setCpu2({
-                    ...cpu2,
-                    position: effect
-                })
-            }
-            if (obj.name === 'cpu3'){
-                setCpu3({
-                    ...cpu3,
-                    position: effect
-                })
-            }
-        }
-        else {
-            return null
         }
     }
 
