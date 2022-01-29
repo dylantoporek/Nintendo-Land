@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 import home from './pages/home.png'
 import signout from './pages/signout.png'
 
-function NavBar({setUser, togLoadGame, togNewGame, setTogLoadGame, setTogNewGame}) {
+function NavBar({setUser}) {
 
     const navigate = useNavigate()
 

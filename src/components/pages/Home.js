@@ -3,7 +3,7 @@ import newgame from '../pages/newgame.png'
 import loadgame from '../pages/loadgame.png'
 import {useNavigate} from 'react-router-dom'
 
-function Home({setGame, togLoadGame, togNewGame, setTogNewGame, setTogLoadGame}){
+function Home(){
 
     const navigate = useNavigate()
     
