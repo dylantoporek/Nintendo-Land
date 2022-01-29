@@ -164,7 +164,7 @@ function Game({game}){
         let alertName = obj.name.toUpperCase()
         
         if (parseInt(obj.position) >= 40){
-            alert(`${alertName} reached the castle. They win!`)
+            alert(`${alertName} reached the castle!`)
             setWinner((winner) =>[...winner, obj])
             setWinnerTrigger(true)
         } else return null
@@ -695,25 +695,13 @@ function Game({game}){
     } if (winnerTrigger){
         return(
             <div>
-                {/* <div id='dice'>
-                <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
-                </div>
-                 */}
                 <div id="game-board">
                     {assignPositions}
-                </div>
-    
-                <div id='hub'>
-                    {positionDisplay}
                 </div>
                 <button id='save-game-button' onClick={handleSave}>
                     <img id='save-game-img' src={save}/>
                 </button>
                 <img src={board}></img>
-                <img id='game-player-label' src={playerlabel}/>
-                <img id='game-cpu1-label' src={cpu1label}/>
-                <img id='game-cpu2-label' src={cpu2label}/>
-                <img id='game-cpu3-label' src={cpu3label}/>
                 <div id='winner-container'></div>
                 {winnerDisplay}
             </div>
