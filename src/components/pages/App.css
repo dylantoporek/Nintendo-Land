@@ -548,6 +548,37 @@ left: -10px;
   left: 1290px;
 }
 
+#winner{
+  position: absolute;
+  top: 200px;
+  left: 500px;
+  
+}
+#winner-container{
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 80px;
+  left: 400px;
+  background-color: white;
+  opacity: 90%;
+  
+}
+
+#winner-avatar{
+  position: absolute;
+  max-width: 200px;
+  left: 100px;
+  top: 100px;
+}
+
+.winner-label{
+  position: relative;
+  left: -30px;
+  top: -50px;
+  max-height: 100%;
+  max-width: 80%;
+}
 
 /* Board Game Spacing */
 

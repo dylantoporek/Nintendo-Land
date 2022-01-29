@@ -22,6 +22,9 @@ import place4 from '../pages/place4.png'
 function Game({game}){
 
     const [checkSpace, setCheckSpace] = useState(false)
+    const [winnerTrigger, setWinnerTrigger] = useState(false)
+    const [winner, setWinner] = useState([])
+    const [diceLock, setDiceLock] = useState(false)
 
     const [player, setPlayer] = useState({
         name: "player",
@@ -46,7 +49,6 @@ function Game({game}){
         avatar: '',
         position: 0
     })
-
 
     const navigate = useNavigate()
 
@@ -85,6 +87,22 @@ function Game({game}){
         
     }, [])
 
+    function handleSave(){
+        fetch(`/games/${game.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
+        }).then(r => {
+            if(r.ok){
+                r.json().then( data=> alert('Game saved!'))
+            } else{
+                r.json().then(console.log('error saving game'))
+            }
+        })
+    }
+
 
     useEffect(()=> {
 
@@ -117,22 +135,6 @@ function Game({game}){
         
     }, [checkSpace])
 
-
-    function handleSave(){
-        fetch(`/games/${game.id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
-        }).then(r => {
-            if(r.ok){
-                r.json().then( data=> alert('Game saved!'))
-            } else{
-                r.json().then(console.log('error saving game'))
-            }
-        })
-    }
 
     function handleRoll(roll){
         const makeTurnPromise = (callback, player) => {
@@ -171,7 +173,9 @@ function Game({game}){
         let alertName = obj.name.toUpperCase()
         if((parseInt(obj.position) >= 40)){
             alert(`${alertName} reached the castle. They win!`)
-            navigate('/')
+            setWinner((winner) =>[...winner, obj])
+            setWinnerTrigger(true)
+            
         }
         if (parseInt(obj.position) === 3){
             alert(`${alertName} used a Warp Pipe. They move ahead 4 spaces.`)
@@ -602,6 +606,42 @@ function Game({game}){
         player.position, cpu1.position, cpu2.position, cpu3.position
     ]
 
+    let whoWon = winner
+
+    if(winner.length > 1){
+        whoWon = [winner[0]]
+    }
+
+
+    const winnerDisplay = whoWon.map((person)=> {
+        console.log(winner)
+        console.log(winner[0])
+        if (person.name === 'player'){
+            return <div id='winner' key='winner'>
+            <img className='winner-label'src={playerlabel}/>
+            <img id='winner-avatar' src={person.avatar} />
+        </div>
+        }
+        
+        if (person.name === 'cpu1'){
+            return <div id='winner' key='winner'>
+            <img className='winner-label'src={cpu1label}/>
+            <img id='winner-avatar' src={person.avatar} />
+        </div>
+        }
+        if (person.name === 'cpu2'){
+            return <div id='winner' key='winner'>
+            <img className='winner-label'src={cpu2label}/>
+            <img id='winner-avatar' src={person.avatar} />
+        </div>
+        }
+        if (person.name === 'cpu3'){
+            return <div id='winner' key='winner'>
+            <img className='winner-label'src={cpu3label}/>
+            <img id='winner-avatar' src={person.avatar} />
+        </div>
+        }
+    })
 
     const assignPositions = activePlayers.map((player)=>{
         return <div key={player.name} className={`space-${player.name}-${player.position}`}>
@@ -632,30 +672,59 @@ function Game({game}){
         
     })
 
-    return(
-        <div>
-            <div id='dice'>
-            <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
+    if(!winnerTrigger){
+        return(
+            <div>
+                <div id='dice'>
+                <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
+                </div>
+                
+                <div id="game-board">
+                    {assignPositions}
+                </div>
+    
+                <div id='hub'>
+                    {positionDisplay}
+                </div>
+                <button id='save-game-button' onClick={handleSave}>
+                    <img id='save-game-img' src={save}/>
+                </button>
+                <img src={board}></img>
+                <img id='game-player-label' src={playerlabel}/>
+                <img id='game-cpu1-label' src={cpu1label}/>
+                <img id='game-cpu2-label' src={cpu2label}/>
+                <img id='game-cpu3-label' src={cpu3label}/>
+                
             </div>
-            
-            <div id="game-board">
-                {assignPositions}
+        ) 
+    } if (winnerTrigger){
+        return(
+            <div>
+                <div id='dice'>
+                <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
+                </div>
+                
+                <div id="game-board">
+                    {assignPositions}
+                </div>
+    
+                <div id='hub'>
+                    {positionDisplay}
+                </div>
+                <button id='save-game-button' onClick={handleSave}>
+                    <img id='save-game-img' src={save}/>
+                </button>
+                <img src={board}></img>
+                <img id='game-player-label' src={playerlabel}/>
+                <img id='game-cpu1-label' src={cpu1label}/>
+                <img id='game-cpu2-label' src={cpu2label}/>
+                <img id='game-cpu3-label' src={cpu3label}/>
+                <div id='winner-container'></div>
+                {winnerDisplay}
             </div>
-
-            <div id='hub'>
-                {positionDisplay}
-            </div>
-            <button id='save-game-button' onClick={handleSave}>
-                <img id='save-game-img' src={save}/>
-            </button>
-            <img src={board}></img>
-            <img id='game-player-label' src={playerlabel}/>
-            <img id='game-cpu1-label' src={cpu1label}/>
-            <img id='game-cpu2-label' src={cpu2label}/>
-            <img id='game-cpu3-label' src={cpu3label}/>
-            
-        </div>
-    )
+        )
+    }
+    
 }
 
 export default Game
