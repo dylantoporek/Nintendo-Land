@@ -118,13 +118,19 @@ function Game({game}){
         if(checkSpace){
             checkSpacePromise(checkSpaceEffect, player)
             .then(()=>{
-                return checkSpacePromise(checkSpaceEffect, cpu1)
+                if(parseInt(player.position) < 40){
+                    return checkSpacePromise(checkSpaceEffect, cpu1)
+                } 
             })
             .then(()=>{
+                if(parseInt(cpu1.position) < 40){
                 return checkSpacePromise(checkSpaceEffect, cpu2)
+                }
             })
             .then(()=>{
+                if(parseInt(cpu2.position) < 40){
                 return checkSpacePromise(checkSpaceEffect, cpu3)
+                }
             })
             .then(()=>{
                 return checkSpacePromise(setCheckSpace, false)
@@ -146,6 +152,15 @@ function Game({game}){
             })
         }
 
+        const makeCpuTurnPromise = (callback, obj) => {
+            return new Promise(function(resolve, reject){
+                setTimeout(() => {
+                    callback(obj)
+                    resolve("blah")
+                }, 2000)
+            })
+        }
+
         const checkTurnPromise = (callback, obj) => {
             return new Promise(function(resolve, reject){
                 setTimeout(() => {
@@ -154,14 +169,14 @@ function Game({game}){
                 }, 2000)
             })
         }
-          
+
         makeTurnPromise(playerRoll, true) 
         .then(()=> {
-            return makeTurnPromise(cpu1Roll, false)
+            return makeCpuTurnPromise(handleComRoll, cpu1)
         }).then(()=> {
-            return makeTurnPromise(cpu2Roll, false)
+            return makeCpuTurnPromise(handleComRoll, cpu2)
         }).then(()=> {
-            return makeTurnPromise(cpu3Roll, false)
+            return makeCpuTurnPromise(handleComRoll, cpu3)
         }).then(()=> {
             checkTurnPromise(setCheckSpace, true)
         })
@@ -502,100 +517,53 @@ function Game({game}){
              
     }
 
-
-    function cpu1Roll(){
+    function handleComRoll(obj){
         let dice = [1, 2, 3, 4, 5, 6]
-        let cpu1Roll = dice[Math.floor(Math.random()*6)]
+        let compRoll = dice[Math.floor(Math.random()*6)]
         let steps = []
-        if (cpu1Roll === 1){
-            steps = [cpu1.position, cpu1.position+1]
+        if (compRoll === 1){
+            steps = [obj.position, obj.position+1]
         }
-        if (cpu1Roll === 2){
-            steps = [cpu1.position, cpu1.position+1, cpu1.position+2]
+        if (compRoll === 2){
+            steps = [obj.position, obj.position+1, obj.position+2]
         }
-        if (cpu1Roll === 3){
-            steps = [cpu1.position, cpu1.position+1, cpu1.position+2, cpu1.position+3]
+        if (compRoll === 3){
+            steps = [obj.position, obj.position+1, obj.position+2, obj.position+3]
         }
-        if (cpu1Roll === 4){
-            steps = [cpu1.position, cpu1.position+1, cpu1.position+2, cpu1.position+3, cpu1.position+4]
+        if (compRoll === 4){
+            steps = [obj.position, obj.position+1, obj.position+2, obj.position+3, obj.position+4]
         }
-        if (cpu1Roll === 5){
-            steps = [cpu1.position, cpu1.position+1, cpu1.position+2, cpu1.position+3, cpu1.position+4, cpu1.position+5]
+        if (compRoll === 5){
+            steps = [obj.position, obj.position+1, obj.position+2, obj.position+3, obj.position+4, obj.position+5]
         } 
-        if (cpu1Roll === 6){
-            steps = [cpu1.position, cpu1.position+1, cpu1.position+2, cpu1.position+3, cpu1.position+4, cpu1.position+5, cpu1.position+6]
-        }
-        
-        for( let i = 0; i < steps.length; i++){
-            setTimeout(() => setCpu1((cpu1) => ({
-                ...cpu1,
-                position: steps[i]
-            })), (200 * (i+1)))
-        } 
-        
-    }
-
-    function cpu2Roll(){
-        let dice = [1, 2, 3, 4, 5, 6]
-        let cpu2Roll = dice[Math.floor(Math.random()*6)]
-        let steps = []
-        if (cpu2Roll === 1){
-            steps = [cpu2.position, cpu2.position+1]
-        }
-        if (cpu2Roll === 2){
-            steps = [cpu2.position, cpu2.position+1, cpu2.position+2]
-        }
-        if (cpu2Roll === 3){
-            steps = [cpu2.position, cpu2.position+1, cpu2.position+2, cpu2.position+3]
-        }
-        if (cpu2Roll === 4){
-            steps = [cpu2.position, cpu2.position+1, cpu2.position+2, cpu2.position+3, cpu2.position+4]
-        }
-        if (cpu2Roll === 5){
-            steps = [cpu2.position, cpu2.position+1, cpu2.position+2, cpu2.position+3, cpu2.position+4, cpu2.position+5]
-        } 
-        if (cpu2Roll === 6){
-            steps = [cpu2.position, cpu2.position+1, cpu2.position+2, cpu2.position+3, cpu2.position+4, cpu2.position+5, cpu2.position+6]
+        if (compRoll === 6){
+            steps = [obj.position, obj.position+1, obj.position+2, obj.position+3, obj.position+4, obj.position+5, obj.position+6]
         } 
 
-        for( let i = 0; i < steps.length; i++){
-            setTimeout(() => setCpu2((cpu2) => ({
-                ...cpu2,
-                position: steps[i]
-            })), (200 * (i+1)))
-        } 
-        
-    }
-
-    function cpu3Roll(){
-        let dice = [1, 2, 3, 4, 5, 6]
-        let cpu3Roll = dice[Math.floor(Math.random()*6)]
-        let steps = []
-        if (cpu3Roll === 1){
-            steps = [cpu3.position, cpu3.position+1]
+        if(obj.name === 'cpu1'){
+            for( let i = 0; i < steps.length; i++){
+                setTimeout(() => setCpu1((cpu1) => ({
+                    ...cpu1,
+                    position: steps[i]
+                })), (200 * (i+1)))
+            } 
         }
-        if (cpu3Roll === 2){
-            steps = [cpu3.position, cpu3.position+1, cpu3.position+2]
+        if(obj.name === 'cpu2'){
+            for( let i = 0; i < steps.length; i++){
+                setTimeout(() => setCpu2((cpu2) => ({
+                    ...cpu2,
+                    position: steps[i]
+                })), (200 * (i+1)))
+            }  
         }
-        if (cpu3Roll === 3){
-            steps = [cpu3.position, cpu3.position+1, cpu3.position+2, cpu3.position+3]
+        if(obj.name === 'cpu3'){
+            for( let i = 0; i < steps.length; i++){
+                setTimeout(() => setCpu3((cpu3) => ({
+                    ...cpu3,
+                    position: steps[i]
+                })), (200 * (i+1)))
+            }   
         }
-        if (cpu3Roll === 4){
-            steps = [cpu3.position, cpu3.position+1, cpu3.position+2, cpu3.position+3, cpu3.position+4]
-        }
-        if (cpu3Roll === 5){
-            steps = [cpu3.position, cpu3.position+1, cpu3.position+2, cpu3.position+3, cpu3.position+4, cpu3.position+5]
-        } 
-        if (cpu3Roll === 6){
-            steps = [cpu3.position, cpu3.position+1, cpu3.position+2, cpu3.position+3, cpu3.position+4, cpu3.position+5, cpu3.position+6]
-        } 
-
-        for( let i = 0; i < steps.length; i++){
-            setTimeout(() => setCpu3((cpu3) => ({
-                ...cpu3,
-                position: steps[i]
-            })), (200 * (i+1)))
-        } 
     }
 
     const activePlayers = [
@@ -614,8 +582,6 @@ function Game({game}){
 
 
     const winnerDisplay = whoWon.map((person)=> {
-        console.log(winner)
-        console.log(winner[0])
         if (person.name === 'player'){
             return <div id='winner' key='winner'>
             <img className='winner-label'src={playerlabel}/>
