@@ -87,7 +87,6 @@ function Game({game}){
 
 
     useEffect(()=> {
-        console.log(checkSpace)
 
         const checkSpacePromise = (callback, obj) => {
             return new Promise(function(resolve, reject){
@@ -174,8 +173,8 @@ function Game({game}){
             alert(`${obj.name} reached the castle. They win!`)
         }
         if (parseInt(obj.position) === 3){
-            alert(`${obj.name} used a Warp Pipe. Move ahead 3 spaces.`)
-            // move from 4 to 7
+            alert(`${obj.name} used a Warp Pipe. Move ahead 4 spaces.`)
+            // move from 3 to 7
             let effect = 7
             if (obj.name === 'player'){
                 setPlayer({
@@ -203,7 +202,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 5){
-            alert(`${obj.name} ran into Bowser. Move back 1 space.`)
+            alert(`${obj.name} ran into Bowser. Move back 3 space.`)
             // move from 5 to 2
             let effect = 2
             if (obj.name === 'player'){
