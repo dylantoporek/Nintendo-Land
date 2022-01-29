@@ -168,12 +168,13 @@ function Game({game}){
     }
 
     function checkSpaceEffect(obj){
-        console.log(obj.name, obj.position)
+        let alertName = obj.name.toUpperCase()
         if((parseInt(obj.position) >= 40)){
-            alert(`${obj.name} reached the castle. They win!`)
+            alert(`${alertName} reached the castle. They win!`)
+            navigate('/')
         }
         if (parseInt(obj.position) === 3){
-            alert(`${obj.name} used a Warp Pipe. Move ahead 4 spaces.`)
+            alert(`${alertName} used a Warp Pipe. They move ahead 4 spaces.`)
             // move from 3 to 7
             let effect = 7
             if (obj.name === 'player'){
@@ -202,7 +203,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 5){
-            alert(`${obj.name} ran into Bowser. Move back 3 space.`)
+            alert(`${alertName} ran into Bowser. They move back 3 spaces.`)
             // move from 5 to 2
             let effect = 2
             if (obj.name === 'player'){
@@ -231,7 +232,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 11){
-            alert(`${obj.name} got attacked by Bokoblins. Move back 1 space.`)
+            alert(`${alertName} got attacked by Bokoblins. They move back 1 space.`)
             // move from 11 to 10
             let effect = 10
             if (obj.name === 'player'){
@@ -260,7 +261,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 15){
-            alert(`${obj.name} recieved help from Nurse Joy. Move forward 4 spaces.`)
+            alert(`${alertName} recieved help from Nurse Joy. They move ahead 4 spaces.`)
             //move from 15 to 19
             let effect = 19
             if (obj.name === 'player'){
@@ -289,7 +290,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 18){
-            alert(`${obj.name} encountered a wild Pokémon. Move back 1 space.`)
+            alert(`${alertName} encountered a wild Pokémon. They move back 2 spaces.`)
             // move from 18 to 16
             let effect = 16
             if (obj.name === 'player'){
@@ -318,7 +319,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 22){
-            alert(`${obj.name} got stuck behind a Slowpoke. Move back 1 space.`)
+            alert(`${alertName} got stuck behind a Slowpoke. They move back 1 space.`)
             // move from 22 to 21
             let effect = 21
             if (obj.name === 'player'){
@@ -346,7 +347,7 @@ function Game({game}){
                 })
             }
         }if (parseInt(obj.position) === 27){
-            alert(`${obj.name} swang ahead using a vine. Move ahead 2 spaces.`)
+            alert(`${alertName} swang ahead using a vine. They move ahead 2 spaces.`)
             // move from 27 to 29
             let effect = 29
             if (obj.name === 'player'){
@@ -375,7 +376,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 28){
-            alert(`${obj.name} got snapped up by a Piranha Plant. Move back 1 space.`)
+            alert(`${alertName} got snapped up by a Piranha Plant. They move back 2 spaces.`)
             // move form 28 to 26
             let effect = 26
             if (obj.name === 'player'){
@@ -404,7 +405,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 32){
-            alert(`${obj.name} was kicked by a Wild Wendell. Move back 1 space.`)
+            alert(`${alertName} was kicked by a Wild Wendell. The move back 2 spaces.`)
             // move from 32 to 30
             let effect = 30
             if (obj.name === 'player'){
@@ -433,7 +434,7 @@ function Game({game}){
             }
         }
         if (parseInt(obj.position) === 37){
-            alert(`${obj.name} slipped on a banana. Move back 1 space.`)
+            alert(`${alertName} slipped on a banana. They move back 1 space.`)
             // move from 37 to 36
             let effect = 36
             if (obj.name === 'player'){
