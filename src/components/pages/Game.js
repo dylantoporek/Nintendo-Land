@@ -109,40 +109,70 @@ function Game({game}){
         const checkSpacePromise = (callback, obj) => {
             return new Promise(function(resolve, reject){
                 setTimeout(() => {
-                    callback(obj)
-                    resolve("resolved")
+                        callback(obj)
+                        resolve("resolved")
                 }, 100)
             })
         }
 
         if(checkSpace){
-            checkSpacePromise(checkSpaceEffect, player)
-            .then(()=>{
-                if(parseInt(player.position) < 40){
-                    return checkSpacePromise(checkSpaceEffect, cpu1)
-                } else return null 
-            })
-            .then(()=>{
-                if(parseInt(cpu1.position) < 40){
-                return checkSpacePromise(checkSpaceEffect, cpu2)
-                } else return null 
-            })
-            .then(()=>{
-                if(parseInt(cpu2.position) < 40){
-                return checkSpacePromise(checkSpaceEffect, cpu3)
-                } else return null 
-            })
-            .then(()=>{
-                return checkSpacePromise(setCheckSpace, false)
-            })
-        } else{
-            return null
+            
+            checkForWinner(player)
+
+            if(!winnerTrigger){
+                checkForWinner(cpu1)
+            }
+
+            if(!winnerTrigger){
+                checkForWinner(cpu2)
+            }
+
+            if(!winnerTrigger){
+                checkForWinner(cpu3)
+            }
+            
+            if(!winnerTrigger){
+                checkSpacePromise(checkSpaceEffect, player)
+                .then(()=>{
+                    if(!winnerTrigger){
+                        return checkSpacePromise(checkSpaceEffect, cpu1)
+                    } else return null 
+                })
+                .then(()=>{
+                    if(!winnerTrigger){ 
+                    return checkSpacePromise(checkSpaceEffect, cpu2)
+                    } else return null 
+                })
+                .then(()=>{
+                    if(!winnerTrigger){   
+                    return checkSpacePromise(checkSpaceEffect, cpu3)
+                    } else return null 
+                })
+                .then(()=>{
+                    return checkSpacePromise(setCheckSpace, false)
+                })
+                .then(()=>{
+                    return checkSpacePromise(setDiceLock, false)
+                })
+
+            } else return null
         }
-        
+
     }, [checkSpace])
+
+    function checkForWinner(obj){
+        let alertName = obj.name.toUpperCase()
+        
+        if (parseInt(obj.position) >= 40){
+            alert(`${alertName} reached the castle. They win!`)
+            setWinner((winner) =>[...winner, obj])
+            setWinnerTrigger(true)
+        } else return null
+    }
 
 
     function handleRoll(roll){
+        setDiceLock(true)
         const makeTurnPromise = (callback, player) => {
             return new Promise(function(resolve, reject){
                 setTimeout(() => {
@@ -187,15 +217,8 @@ function Game({game}){
     function checkSpaceEffect(obj){
         let alertName = obj.name.toUpperCase()
         
-
         if(!winnerTrigger){
 
-            if((parseInt(obj.position) >= 40)){
-                alert(`${alertName} reached the castle. They win!`)
-                setWinner((winner) =>[...winner, obj])
-                setWinnerTrigger(true)
-                
-            }
             if (parseInt(obj.position) === 3){
                 alert(`${alertName} used a Warp Pipe. They move ahead 4 spaces.`)
                 // move from 3 to 7
@@ -648,7 +671,7 @@ function Game({game}){
         return(
             <div>
                 <div id='dice'>
-                <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
+                <Dice onRoll={diceLock? null : handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
                 </div>
                 
                 <div id="game-board">
@@ -672,10 +695,10 @@ function Game({game}){
     } if (winnerTrigger){
         return(
             <div>
-                <div id='dice'>
+                {/* <div id='dice'>
                 <Dice onRoll={handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
                 </div>
-                
+                 */}
                 <div id="game-board">
                     {assignPositions}
                 </div>
