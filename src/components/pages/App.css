@@ -556,10 +556,10 @@ left: -10px;
 }
 #winner-container{
   position: absolute;
-  width: 600px;
+  width: 695px;
   height: 600px;
   top: 80px;
-  left: 400px;
+  left: 372px;
   background-color: white;
   opacity: 90%;
   
@@ -568,16 +568,22 @@ left: -10px;
 #winner-avatar{
   position: absolute;
   max-width: 200px;
-  left: 100px;
-  top: 100px;
+  left: 130px;
+  top: 20px;
 }
 
 .winner-label{
-  position: relative;
-  left: -30px;
-  top: -50px;
-  max-height: 100%;
-  max-width: 80%;
+  position: absolute;
+  left: 50px;
+  top: -90px;
+  max-width: 350px;
+}
+
+#win{
+  position: absolute;
+  left: 80px;
+  top: 340px;
+  max-width: 300px;
 }
 
 /* Board Game Spacing */
@@ -2103,8 +2109,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 90px;
-  left: 160px;
+  top: 50px;
+  left: 120px;
   z-index: 14;
 }
 
@@ -2112,8 +2118,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 80px;
+  left: 155px;
   z-index: 13;
 }
 
@@ -2121,7 +2127,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
+  top: 110px;
   left: 190px;
   z-index: 12;
 }
@@ -2130,8 +2136,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 140px;
+  left: 225px;
   z-index: 11;
 }
 
@@ -2141,8 +2147,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 90px;
-  left: 160px;
+  top: 50px;
+  left: 120px;
   z-index: 14;
 }
 
@@ -2150,8 +2156,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 80px;
+  left: 155px;
   z-index: 13;
 }
 
@@ -2159,7 +2165,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
+  top: 110px;
   left: 190px;
   z-index: 12;
 }
@@ -2168,8 +2174,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 140px;
+  left: 225px;
   z-index: 11;
 }
 
@@ -2179,8 +2185,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 90px;
-  left: 160px;
+  top: 50px;
+  left: 120px;
   z-index: 14;
 }
 
@@ -2188,8 +2194,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 80px;
+  left: 155px;
   z-index: 13;
 }
 
@@ -2197,7 +2203,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
+  top: 110px;
   left: 190px;
   z-index: 12;
 }
@@ -2206,8 +2212,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 140px;
+  left: 225px;
   z-index: 11;
 }
 
@@ -2217,8 +2223,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 90px;
-  left: 160px;
+  top: 50px;
+  left: 120px;
   z-index: 14;
 }
 
@@ -2226,8 +2232,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 80px;
+  left: 155px;
   z-index: 13;
 }
 
@@ -2235,7 +2241,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
+  top: 110px;
   left: 190px;
   z-index: 12;
 }
@@ -2244,8 +2250,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 140px;
+  left: 225px;
   z-index: 11;
 }
 
@@ -2255,8 +2261,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 90px;
-  left: 160px;
+  top: 50px;
+  left: 120px;
   z-index: 14;
 }
 
@@ -2264,8 +2270,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 80px;
+  left: 155px;
   z-index: 13;
 }
 
@@ -2273,7 +2279,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
+  top: 110px;
   left: 190px;
   z-index: 12;
 }
@@ -2282,8 +2288,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 140px;
+  left: 225px;
   z-index: 11;
 }
 
@@ -2293,8 +2299,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 90px;
-  left: 160px;
+  top: 50px;
+  left: 120px;
   z-index: 14;
 }
 
@@ -2302,8 +2308,8 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 80px;
+  left: 155px;
   z-index: 13;
 }
 
@@ -2311,7 +2317,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
+  top: 110px;
   left: 190px;
   z-index: 12;
 }
@@ -2320,7 +2326,7 @@ left: -10px;
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 115px;
-  left: 190px;
+  top: 140px;
+  left: 225px;
   z-index: 11;
 }

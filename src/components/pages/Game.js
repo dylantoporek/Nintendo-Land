@@ -18,6 +18,7 @@ import place1 from '../pages/place1.png'
 import place2 from '../pages/place2.png'
 import place3 from '../pages/place3.png'
 import place4 from '../pages/place4.png'
+import win from '../pages/wins.png'
 
 function Game({game}){
 
@@ -34,19 +35,19 @@ function Game({game}){
 
     const [cpu1, setCpu1] = useState({
         name: "cpu1",
-        avatar: '',
+        avatar: "",
         position: 0
     })
 
     const [cpu2, setCpu2] = useState({
         name: "cpu2",
-        avatar: '',
+        avatar: "",
         position: 0
     })
 
     const [cpu3, setCpu3] = useState({
         name: "cpu3",
-        avatar: '',
+        avatar: "",
         position: 0
     })
 
@@ -615,6 +616,7 @@ function Game({game}){
             return <div id='winner' key='winner'>
             <img className='winner-label'src={playerlabel}/>
             <img id='winner-avatar' src={person.avatar} />
+            <img id='win' src={win}/>
         </div>
         }
         
