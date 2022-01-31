@@ -11,8 +11,6 @@ function Login({onLogin}){
 
     return (
       <div>
-
-      
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
@@ -34,6 +32,6 @@ function Login({onLogin}){
         )}
       </div>
     );
-  }
+}
 
 export default Login

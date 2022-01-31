@@ -23,18 +23,6 @@ function App() {
       }
     });
 
-    fetch("/games").then((r)=> {
-      if (r.ok) {
-        r.json().then((games)=> {
-          
-          const mostRecent = games[games.length - 1]
-          setGame(mostRecent)
-          setGameFiles(games)
-        })
-      } else {
-        r.json().then((data)=> console.log(data))
-      }
-    })
   }, []);
 
 
@@ -55,7 +43,7 @@ function App() {
           <Route path="/" element={<Home setGame={setGame} setGameFiles={setGameFiles}/>}></Route>
         </Routes>
         </div>
-  );
+    );
   }
 
   

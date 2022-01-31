@@ -88,6 +88,7 @@ function Game({game}){
         
     }, [])
 
+    // PATCH FETCH FOR GAMES
     function handleSave(){
         fetch(`/games/${game.id}`, {
             method: "PATCH",
@@ -624,18 +625,21 @@ function Game({game}){
             return <div id='winner' key='winner'>
             <img className='winner-label'src={cpu1label}/>
             <img id='winner-avatar' src={person.avatar} />
+            <img id='win' src={win}/>
         </div>
         }
         if (person.name === 'cpu2'){
             return <div id='winner' key='winner'>
             <img className='winner-label'src={cpu2label}/>
             <img id='winner-avatar' src={person.avatar} />
+            <img id='win' src={win}/>
         </div>
         }
         if (person.name === 'cpu3'){
             return <div id='winner' key='winner'>
             <img className='winner-label'src={cpu3label}/>
             <img id='winner-avatar' src={person.avatar} />
+            <img id='win' src={win}/>
         </div>
         }
     })
@@ -671,7 +675,7 @@ function Game({game}){
 
     if(!winnerTrigger){
         return(
-            <div>
+            <div id='game-container'>
                 <div id='dice'>
                 <Dice onRoll={diceLock? null : handleRoll} faces={[dice1, dice2, dice3, dice4, dice5, dice6]} faceBg={'#ff0000'} size={80} />
                 </div>

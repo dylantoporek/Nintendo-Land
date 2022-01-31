@@ -11,10 +11,6 @@ function GameForm({setGame}){
     const [cpu1Avatar, setCpu1Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png")
     const [cpu2Avatar, setCpu2Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png")
     const [cpu3Avatar, setCpu3Avatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1bd70000-03860002.png")
-    const [playerPosition, setPlayerPosition] = useState(0)
-    const [cpu1Position, setCpu1Position] = useState(0)
-    const [cpu2Position, setCpu2Position] = useState(0)
-    const [cpu3Position, setCpu3Position] = useState(0)
     const [errors, setErrors]= useState([])
     const navigate = useNavigate()
     
@@ -35,35 +31,35 @@ function GameForm({setGame}){
         setCpu3Avatar(e.target.value)
     }
 
-
     function newGameStart(){
        let game = {
             player_avatar: playerAvatar,
-            player_position: playerPosition,
+            player_position: 0,
             cpu1_avatar: cpu1Avatar,
-            cpu1_position: cpu1Position,
+            cpu1_position: 0,
             cpu2_avatar: cpu2Avatar,
-            cpu2_position: cpu2Position,
+            cpu2_position: 0,
             cpu3_avatar: cpu3Avatar,
-            cpu3_position: cpu3Position
+            cpu3_position: 0
         }
 
+        //CREATE FETCH FOR GAMES 
         fetch('/games',{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(game),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((data) => {
-            setGame(data)
-            navigate('/game')
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(game),
+            }).then((r) => {
+            if (r.ok) {
+                r.json().then((data) => {
+                    setGame(data)
+                    navigate('/game')
+                });
+            } else {
+                r.json().then((err) => setErrors(err.errors));
+            }
         });
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
     }
 
     const selectedAvatars = [playerAvatar, cpu1Avatar, cpu2Avatar, cpu3Avatar]
@@ -86,8 +82,6 @@ function GameForm({setGame}){
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00090000-000d0002.png">Diddy Kong</option>
                 </select>
                
-
-            
                 <img src={cpu1label} id='cpu1-label'/>
                 <select id='cpu1-select' value={cpu1Avatar} onChange={handleC1Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00010000-000c0002.png">Luigi</option>
@@ -95,16 +89,12 @@ function GameForm({setGame}){
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00070000-001a0002.png">Wario</option>
                 </select>
 
-
                 <img src={cpu2label} id='cpu2-label'/>
                 <select id='cpu2-select' value={cpu2Avatar} onChange={handleC2Change}>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01020100-001b0002.png">Ganondorf</option>
                     <option value='https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010100-00170002.png'>Sheik</option>
                     <option value="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01410000-035c0902.png">Bokoblin</option>
                 </select>
-
-  
-
 
                 <img src={cpu3label} id='cpu3-label'/>
                 <select id='cpu3-select' value={cpu3Avatar} onChange={handleC3Change}>

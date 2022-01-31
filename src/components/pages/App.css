@@ -374,6 +374,7 @@ left: -10px;
   height: 35px;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 
 #link-home{
@@ -415,6 +416,14 @@ left: -10px;
 }
 /* GAME BOARD / AVATAR ////////////////////////////////////////////////////////////*/
 
+#game-container{
+  position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 #game-board{
   position: fixed;
     top: 0;
@@ -442,8 +451,9 @@ left: -10px;
   position: absolute;
   background-color: white;
   border-color: transparent;
-  z-index: 1000;
-  top: 2px;
+  opacity: 90%;
+  z-index: 10000000000000;
+  top: 35px;
   left: 670px;
   width: 100px;
   height: 30px;
