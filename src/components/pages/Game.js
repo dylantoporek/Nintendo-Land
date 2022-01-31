@@ -29,63 +29,35 @@ function Game({game}){
 
     const [player, setPlayer] = useState({
         name: "player",
-        avatar: '',
-        position: 0
+        avatar: game.player_avatar,
+        position: game.player_position
     })
 
     const [cpu1, setCpu1] = useState({
         name: "cpu1",
-        avatar: "",
-        position: 0
+        avatar: game.cpu1_avatar,
+        position: game.cpu1_position
     })
 
     const [cpu2, setCpu2] = useState({
         name: "cpu2",
-        avatar: "",
-        position: 0
+        avatar: game.cpu2_avatar,
+        position: game.cpu2_position
     })
 
     const [cpu3, setCpu3] = useState({
         name: "cpu3",
-        avatar: "",
-        position: 0
+        avatar: game.cpu3_avatar,
+        position: game.cpu3_position
     })
 
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if (game){
-            setPlayer({
-                name: "player",
-                avatar: game.player_avatar,
-                position: game.player_position
-            })
-        
-            setCpu1({
-                name: "cpu1",
-                avatar: game.cpu1_avatar,
-                position: game.cpu1_position
-            })
-            
-            setCpu2({
-                name: "cpu2",
-                avatar: game.cpu2_avatar,
-                position: game.cpu2_position
-            })
-        
-            setCpu3({
-                name: "cpu3",
-                avatar: game.cpu3_avatar,
-                position: game.cpu3_position
-            })
-
-            
-        } else {
+        if (!game){
             alert('You must create a new game or load an existing game to play.')
             navigate('/')
-        }
-            
-        
+        } 
     }, [])
 
     // PATCH FETCH FOR GAMES
@@ -109,7 +81,7 @@ function Game({game}){
     useEffect(()=> {
 
         const checkSpacePromise = (callback, obj) => {
-            return new Promise(function(resolve, reject){
+            return new Promise(function(resolve){
                 setTimeout(() => {
                         callback(obj)
                         resolve("resolved")
@@ -118,47 +90,29 @@ function Game({game}){
         }
 
         if(checkSpace){
-            
-            checkForWinner(player)
-
-            if(!winnerTrigger){
+            checkSpacePromise(checkSpaceEffect, player)
+            .then(()=>{
+                return checkSpacePromise(checkSpaceEffect, cpu1)
+            })
+            .then(()=>{
+                return checkSpacePromise(checkSpaceEffect, cpu2)
+            })
+            .then(()=>{  
+                return checkSpacePromise(checkSpaceEffect, cpu3)
+            })
+            .then(()=>{
+                return checkSpacePromise(setCheckSpace, false)
+            })
+            .then(()=>{
+                return checkSpacePromise(setDiceLock, false)
+            })
+            .then(()=>{
+                checkForWinner(player)
                 checkForWinner(cpu1)
-            }
-
-            if(!winnerTrigger){
                 checkForWinner(cpu2)
-            }
-
-            if(!winnerTrigger){
                 checkForWinner(cpu3)
-            }
-            
-            if(!winnerTrigger){
-                checkSpacePromise(checkSpaceEffect, player)
-                .then(()=>{
-                    if(!winnerTrigger){
-                        return checkSpacePromise(checkSpaceEffect, cpu1)
-                    } else return null 
-                })
-                .then(()=>{
-                    if(!winnerTrigger){ 
-                    return checkSpacePromise(checkSpaceEffect, cpu2)
-                    } else return null 
-                })
-                .then(()=>{
-                    if(!winnerTrigger){   
-                    return checkSpacePromise(checkSpaceEffect, cpu3)
-                    } else return null 
-                })
-                .then(()=>{
-                    return checkSpacePromise(setCheckSpace, false)
-                })
-                .then(()=>{
-                    return checkSpacePromise(setDiceLock, false)
-                })
-
-            } else return null
-        }
+            })
+        } else return null
 
     }, [checkSpace])
 
@@ -704,9 +658,9 @@ function Game({game}){
                 <div id="game-board">
                     {assignPositions}
                 </div>
-                <button id='save-game-button' onClick={handleSave}>
+                {/* <button id='save-game-button' onClick={handleSave}>
                     <img id='save-game-img' src={save}/>
-                </button>
+                </button> */}
                 <img src={board}></img>
                 <div id='winner-container'></div>
                 {winnerDisplay}
