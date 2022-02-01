@@ -90,6 +90,7 @@ function Game({game}){
         }
 
         if(checkSpace){
+
             checkSpacePromise(checkSpaceEffect, player)
             .then(()=>{
                 return checkSpacePromise(checkSpaceEffect, cpu1)
@@ -130,44 +131,33 @@ function Game({game}){
     function handleRoll(roll){
         setDiceLock(true)
         const makeTurnPromise = (callback, player) => {
-            return new Promise(function(resolve, reject){
+            return new Promise(function(resolve){
                 setTimeout(() => {
                     player ? callback(roll) : callback()
-                    resolve("blah")
+                    resolve("resolve")
                 }, 2000)
             })
         }
 
-        const makeCpuTurnPromise = (callback, obj) => {
-            return new Promise(function(resolve, reject){
+        const makePromise = (callback, obj) => {
+            return new Promise(function(resolve){
                 setTimeout(() => {
                     callback(obj)
-                    resolve("blah")
-                }, 2000)
-            })
-        }
-
-        const checkTurnPromise = (callback, obj) => {
-            return new Promise(function(resolve, reject){
-                setTimeout(() => {
-                    callback()
-                    resolve(setCheckSpace(true))
+                    resolve("resolve")
                 }, 2000)
             })
         }
 
         makeTurnPromise(playerRoll, true) 
         .then(()=> {
-            return makeCpuTurnPromise(handleComRoll, cpu1)
+            return makePromise(handleComRoll, cpu1)
         }).then(()=> {
-            return makeCpuTurnPromise(handleComRoll, cpu2)
+            return makePromise(handleComRoll, cpu2)
         }).then(()=> {
-            return makeCpuTurnPromise(handleComRoll, cpu3)
+            return makePromise(handleComRoll, cpu3)
         }).then(()=> {
-            checkTurnPromise(setCheckSpace, true)
-        })
-            
-            
+            return makePromise(setCheckSpace, true)
+        })    
     }
 
     function checkSpaceEffect(obj){
