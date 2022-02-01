@@ -652,9 +652,6 @@ function Game({game}){
                 <div id="game-board">
                     {assignPositions}
                 </div>
-                {/* <button id='save-game-button' onClick={handleSave}>
-                    <img id='save-game-img' src={save}/>
-                </button> */}
                 <img src={board}></img>
                 <div id='winner-container'></div>
                 {winnerDisplay}
