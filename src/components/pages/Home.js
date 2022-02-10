@@ -14,7 +14,7 @@ function Home(){
         navigate('/load-game')
     }
     return(
-        <div>
+        <div id='home-container'>
             <button id='home-new-game-button' onClick={handleNGClick}>
                 <img id='home-new-game-img' src={newgame}/>
             </button>
