@@ -10,7 +10,7 @@ function Login({onLogin}){
     const [showLogin, setShowLogin] = useState(true);
 
     return (
-      <div>
+      <div id='login-contianer'>
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />

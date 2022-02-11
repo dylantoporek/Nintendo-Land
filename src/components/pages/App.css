@@ -1,4 +1,10 @@
 /* Login / SignUp Forms */
+
+#login-contianer{
+  display: flex;
+  justify-content: center;
+}
+
 #login-form{
   position: absolute;
   top: 200px;
@@ -9,8 +15,8 @@
   position: relative;
   top: -42px;
   left: -10px;
-  max-height: 20%;
-  max-width: 20%;
+  max-height: 30px;
+  max-width: 175px;
 }
 
 #username-input{
@@ -21,8 +27,8 @@
 
 #password-label{
   position: relative;
-  max-height: 20%;
-  max-width: 20%;
+  max-height: 30px;
+  max-width: 175px;
   left: -341px;
   top: 10px;
 }
@@ -51,7 +57,7 @@
 #signup-link{
   position: relative;
   top: 500px;
-  left: 460px;
+  left: 0px;
   max-width: 25%;
   max-height: 25%
 }
@@ -62,7 +68,7 @@
   border-color: transparent;
   width: 150px;
   top: 503px;
-  left: 470px;
+  left: 0px;
 }
 
 #sign-me-up{
@@ -409,6 +415,7 @@ left: -10px;
   background-color: white;
   border-color: transparent;
   left: 80%;
+  right: 10%;
   top: 0px;
   width: 100px;
   z-index: 10000000000000000000000000000;
