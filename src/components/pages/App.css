@@ -1,52 +1,70 @@
 /* Login / SignUp Forms */
 
-#login-contianer{
+#login-page-contianer{
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+#login-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+}
+
+#signup-div{
+  display: flex;
+  width: 80%;
+  height: 80%
 }
 
 #login-form{
   position: absolute;
-  top: 200px;
-  left: 560px;
+  justify-content: center;
+  top: 25%;
+  left: 40%;
+  max-width: 500px;
 }
 
 #username-label{
-  position: relative;
+  /* position: relative;
   top: -42px;
-  left: -10px;
+  left: -10px; */
+  justify-content: center;
   max-height: 30px;
   max-width: 175px;
 }
 
 #username-input{
   position: relative;
-  top: -50px;
+  top: -10px;
 
 }
 
 #password-label{
+/* justify-content: center; */
   position: relative;
   max-height: 30px;
   max-width: 175px;
-  left: -341px;
-  top: 10px;
+  top: 18px;
 }
 
 #password-input{
   position: relative;
-  left: -330px;
-  top: 2px;
+  top: 10px;
 }
 
 #submit-login{
   position: relative;
   background-color: white;
   border-color: transparent;
-  left: -595px;
   width: 200px;
   top: 150px;
   text-shadow: none;
+  left: 50px;
 }
 
 #loginlabel{
