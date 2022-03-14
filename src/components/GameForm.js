@@ -44,7 +44,7 @@ function GameForm({setGame}){
         }
 
         //CREATE FETCH FOR GAMES 
-        fetch('/games',{
+        fetch('/api/games',{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

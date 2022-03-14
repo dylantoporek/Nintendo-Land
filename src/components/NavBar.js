@@ -6,7 +6,7 @@ import signout from './pages/signout.png'
 function NavBar({setUser}) {
 
     function handleLogoutClick() {
-        fetch("/logout", { method: "DELETE" }).then((r) => {
+        fetch("/api/logout", { method: "DELETE" }).then((r) => {
           if (r.ok) {
             setUser(null);
           }
