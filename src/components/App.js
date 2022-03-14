@@ -6,6 +6,7 @@ import Game from "./pages/Game";
 import Home from "./pages/Home";
 import GameForm from "./GameForm";
 import LoadForm from "./LoadForm";
+import url from "../url";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/api/me").then((r) => {
+    fetch(url+"/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else{

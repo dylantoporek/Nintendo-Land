@@ -3,6 +3,7 @@ import userlabel from './pages/username.png'
 import passwordlabel from './pages/password.png'
 import passwordconflabel from './pages/passwordconfirmation.png'
 import signuplabel from './pages/signup.png'
+import url from "../url";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ function SignUpForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch("/api/signup", {
+    fetch(url+"/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

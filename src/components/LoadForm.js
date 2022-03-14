@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom"
 import loadgame from './pages/loadgame.png'
 import deletegame from './pages/deletegame.png'
+import url from "../url";
 
 function LoadForm({setGame}){
     
@@ -10,7 +11,7 @@ function LoadForm({setGame}){
     
     //INDEX FETCH FOR GAMES
     useEffect(()=> {
-        fetch("/api/games").then((r)=> {
+        fetch(url+"/games").then((r)=> {
             if (r.ok) {
               r.json().then((games)=> {
                 setLoadFiles(games)
@@ -35,7 +36,7 @@ function LoadForm({setGame}){
         const updatedLoadFiles = loadFiles.filter((file)=> file.id != deletedFile.id)
         setLoadFiles(updatedLoadFiles)
 
-        fetch(`/api/games/${deletedFile.id}`, {
+        fetch(url+`/games/${deletedFile.id}`, {
             method: 'DELETE',
           })
           .then((res) => {

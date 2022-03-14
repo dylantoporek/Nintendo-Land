@@ -19,6 +19,7 @@ import place2 from '../pages/place2.png'
 import place3 from '../pages/place3.png'
 import place4 from '../pages/place4.png'
 import win from '../pages/wins.png'
+import url from "../url";
 
 function Game({game}){
 
@@ -62,7 +63,7 @@ function Game({game}){
 
     // PATCH FETCH FOR GAMES
     function handleSave(){
-        fetch(`/api/games/${game.id}`, {
+        fetch(url+`/games/${game.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

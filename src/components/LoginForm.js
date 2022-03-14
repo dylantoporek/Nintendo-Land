@@ -3,6 +3,7 @@ import './pages/App.css'
 import userlabel from './pages/username.png'
 import passwordlabel from './pages/password.png'
 import loginlabel from './pages/login.png'
+import url from "../url";
 
 
 function LoginForm({ onLogin }) {
@@ -12,7 +13,7 @@ function LoginForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/api/login", {
+    fetch(url+"/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

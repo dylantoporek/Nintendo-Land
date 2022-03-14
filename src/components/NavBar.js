@@ -2,11 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import home from './pages/home.png'
 import signout from './pages/signout.png'
+import url from "../url";
 
 function NavBar({setUser}) {
 
     function handleLogoutClick() {
-        fetch("/api/logout", { method: "DELETE" }).then((r) => {
+        fetch(url+"/logout", { method: "DELETE" }).then((r) => {
           if (r.ok) {
             setUser(null);
           }
