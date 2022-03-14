@@ -26,9 +26,9 @@ function SignUpForm({ onLogin }) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => onLogin(user)).catch((err) => console.log(err));
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.errors)).catch((err) => console.log(err));
       }
     });
   }
