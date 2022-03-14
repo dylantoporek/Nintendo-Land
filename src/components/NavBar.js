@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import home from './pages/home.png'
 import signout from './pages/signout.png'
-import url from "../url";
+import url from '../url';
 
 function NavBar({setUser}) {
 

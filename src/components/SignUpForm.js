@@ -3,7 +3,7 @@ import userlabel from './pages/username.png'
 import passwordlabel from './pages/password.png'
 import passwordconflabel from './pages/passwordconfirmation.png'
 import signuplabel from './pages/signup.png'
-import url from "../url";
+import url from '../url';
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");

@@ -6,7 +6,7 @@ import Game from "./pages/Game";
 import Home from "./pages/Home";
 import GameForm from "./GameForm";
 import LoadForm from "./LoadForm";
-import url from "../url";
+import url from '../url'
 
 
 function App() {

@@ -5,7 +5,7 @@ import cpu1label from './pages/cpu1label.png'
 import cpu2label from './pages/cpu2label.png'
 import cpu3label from './pages/cpu3label.png'
 import start from './pages/start.png'
-import url from "../url";
+import url from '../url';
 
 function GameForm({setGame}){
     const [playerAvatar, setPlayerAvatar] = useState("https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png")
