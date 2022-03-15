@@ -17,7 +17,9 @@ function App() {
   useEffect(() => {
     // auto-login
     fetch(url+"/me", {
-      mode: 'no-cors'
+      headers: {
+        mode: 'no-cors'
+      }
     }).then((r) => {
       
       if (r.ok) {
