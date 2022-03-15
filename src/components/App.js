@@ -6,7 +6,8 @@ import Game from "./pages/Game";
 import Home from "./pages/Home";
 import GameForm from "./GameForm";
 import LoadForm from "./LoadForm";
-import url from '../url'
+import url from '../url';
+import CSRFToken from '../cookies'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     fetch(url+"/me", {
       headers: {
         "Access-Control-Allow-Origin": '*',
+        "X-CSRF-Token": CSRFToken(document.cookie),
         mode: 'cors',
       }
     }).then((r) => {
