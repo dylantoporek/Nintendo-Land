@@ -67,6 +67,8 @@ function Game({game}){
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": '*',
+                mode: 'cors',
             },
             body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
         }).then(r => {

@@ -17,7 +17,8 @@ function LoginForm({ onLogin }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        mode: 'no-cors',
+        "Access-Control-Allow-Origin": '*',
+        mode: 'cors',
       },
       body: JSON.stringify({ username, password }),
     }).then((r) => {

@@ -8,7 +8,11 @@ function NavBar({setUser}) {
 
     function handleLogoutClick() {
         fetch(url+"/logout", {
-          method: "DELETE" 
+          method: "DELETE", 
+          headers: {
+            "Access-Control-Allow-Origin": '*',
+            mode: 'cors',
+          }
         }).then((r) => {
           if (r.ok) {
             setUser(null);

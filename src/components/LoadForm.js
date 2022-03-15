@@ -12,6 +12,10 @@ function LoadForm({setGame}){
     //INDEX FETCH FOR GAMES
     useEffect(()=> {
         fetch(url+"/games", {
+          headers: {
+            "Access-Control-Allow-Origin": '*',
+            mode: 'cors',
+          }
         }).then((r)=> {
             if (r.ok) {
               r.json().then((games)=> {
@@ -39,6 +43,10 @@ function LoadForm({setGame}){
 
         fetch(url+`/games/${deletedFile.id}`, {
           method: 'DELETE',
+          headers: {
+            "Access-Control-Allow-Origin": '*',
+            mode: 'cors',
+          }
           })
           .then((res) => {
             if (res.ok) {

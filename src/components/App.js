@@ -18,7 +18,8 @@ function App() {
     // auto-login
     fetch(url+"/me", {
       headers: {
-        mode: 'no-cors'
+        "Access-Control-Allow-Origin": '*',
+        mode: 'cors',
       }
     }).then((r) => {
       
