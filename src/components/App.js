@@ -16,7 +16,9 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch(url+"/me").then((r) => {
+    fetch(url+"/me", {
+      'Access-Control-Allow-Origin': '*',
+    }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else{

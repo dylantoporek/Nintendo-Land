@@ -16,6 +16,7 @@ function SignUpForm({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     fetch("/signup", {
+      'Access-Control-Allow-Origin': '*',
       method: "POST",
       headers: {
         "Content-Type": "application/json",

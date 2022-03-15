@@ -7,7 +7,10 @@ import url from '../url';
 function NavBar({setUser}) {
 
     function handleLogoutClick() {
-        fetch(url+"/logout", { method: "DELETE" }).then((r) => {
+        fetch(url+"/logout", {
+          'Access-Control-Allow-Origin': '*', 
+          method: "DELETE" 
+        }).then((r) => {
           if (r.ok) {
             setUser(null);
           }

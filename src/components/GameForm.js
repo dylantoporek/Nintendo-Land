@@ -46,6 +46,7 @@ function GameForm({setGame}){
 
         //CREATE FETCH FOR GAMES 
         fetch(url+'/games',{
+            'Access-Control-Allow-Origin': '*',
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

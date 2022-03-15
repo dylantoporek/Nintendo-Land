@@ -11,7 +11,9 @@ function LoadForm({setGame}){
     
     //INDEX FETCH FOR GAMES
     useEffect(()=> {
-        fetch(url+"/games").then((r)=> {
+        fetch(url+"/games", {
+          'Access-Control-Allow-Origin': '*',
+        }).then((r)=> {
             if (r.ok) {
               r.json().then((games)=> {
                 setLoadFiles(games)
@@ -37,7 +39,8 @@ function LoadForm({setGame}){
         setLoadFiles(updatedLoadFiles)
 
         fetch(url+`/games/${deletedFile.id}`, {
-            method: 'DELETE',
+          'Access-Control-Allow-Origin': '*',  
+          method: 'DELETE',
           })
           .then((res) => {
             if (res.ok) {

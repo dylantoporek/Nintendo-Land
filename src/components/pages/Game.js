@@ -64,6 +64,7 @@ function Game({game}){
     // PATCH FETCH FOR GAMES
     function handleSave(){
         fetch(url+`/games/${game.id}`, {
+            'Access-Control-Allow-Origin': '*',
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
