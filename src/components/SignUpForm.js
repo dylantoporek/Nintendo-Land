@@ -15,7 +15,7 @@ function SignUpForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch(url+"/signup", {
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
