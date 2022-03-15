@@ -63,7 +63,7 @@ function Game({game}){
 
     // PATCH FETCH FOR GAMES
     function handleSave(){
-        fetch(`/games/${game.id}`, {
+        fetch(url+`/games/${game.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

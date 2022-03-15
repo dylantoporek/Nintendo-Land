@@ -13,7 +13,7 @@ function LoginForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/login", {
+    fetch(url+"/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -11,7 +11,7 @@ function LoadForm({setGame}){
     
     //INDEX FETCH FOR GAMES
     useEffect(()=> {
-        fetch("/games").then((r)=> {
+        fetch(url+"/games").then((r)=> {
             if (r.ok) {
               r.json().then((games)=> {
                 setLoadFiles(games)
@@ -36,7 +36,7 @@ function LoadForm({setGame}){
         const updatedLoadFiles = loadFiles.filter((file)=> file.id != deletedFile.id)
         setLoadFiles(updatedLoadFiles)
 
-        fetch(`/games/${deletedFile.id}`, {
+        fetch(url+`/games/${deletedFile.id}`, {
             method: 'DELETE',
           })
           .then((res) => {
