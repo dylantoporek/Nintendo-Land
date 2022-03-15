@@ -8,7 +8,6 @@ function NavBar({setUser}) {
 
     function handleLogoutClick() {
         fetch(url+"/logout", {
-          'Access-Control-Allow-Origin': '*', 
           method: "DELETE" 
         }).then((r) => {
           if (r.ok) {

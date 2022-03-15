@@ -14,7 +14,6 @@ function LoginForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     fetch(url+"/login", {
-      'Access-Control-Allow-Origin': '*',
       method: "POST",
       headers: {
         "Content-Type": "application/json",
