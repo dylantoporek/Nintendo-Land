@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom"
 import loadgame from './pages/loadgame.png'
 import deletegame from './pages/deletegame.png'
 import url from "../url";
+import { deleteConfig, getConfig } from "../CSRFToken";
 
 function LoadForm({setGame}){
     
@@ -11,12 +12,8 @@ function LoadForm({setGame}){
     
     //INDEX FETCH FOR GAMES
     useEffect(()=> {
-        fetch(url+"/games", {
-          headers: {
-            "Access-Control-Allow-Origin": '*',
-            mode: 'cors',
-          }
-        }).then((r)=> {
+        fetch(url+"/games", getConfig())
+        .then((r)=> {
             if (r.ok) {
               r.json().then((games)=> {
                 setLoadFiles(games)
@@ -41,13 +38,7 @@ function LoadForm({setGame}){
         const updatedLoadFiles = loadFiles.filter((file)=> file.id != deletedFile.id)
         setLoadFiles(updatedLoadFiles)
 
-        fetch(url+`/games/${deletedFile.id}`, {
-          method: 'DELETE',
-          headers: {
-            "Access-Control-Allow-Origin": '*',
-            mode: 'cors',
-          }
-          })
+        fetch(url+`/games/${deletedFile.id}`, deleteConfig())
           .then((res) => {
             if (res.ok) {
               console.log("file deleted")

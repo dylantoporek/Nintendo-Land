@@ -4,6 +4,7 @@ import passwordlabel from './pages/password.png'
 import passwordconflabel from './pages/passwordconfirmation.png'
 import signuplabel from './pages/signup.png'
 import url from '../url';
+import { postConfig } from "../CSRFToken";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -15,19 +16,8 @@ function SignUpForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": '*',
-        mode: 'cors',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        passwordConfirmation
-      }),
-    }).then((r) => {
+    fetch("/signup", postConfig({username, password, passwordConfirmation}))
+    .then((r) => {
       if (r.ok) {
         r.json().then((user) => onLogin(user)).catch((err) => console.log(err));
       } else {

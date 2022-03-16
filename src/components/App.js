@@ -7,7 +7,8 @@ import Home from "./pages/Home";
 import GameForm from "./GameForm";
 import LoadForm from "./LoadForm";
 import url from '../url';
-import CSRFToken from '../cookies'
+import { getConfig } from "../CSRFToken";
+
 
 
 function App() {
@@ -17,13 +18,8 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch(url+"/me", {
-      headers: {
-        "Access-Control-Allow-Origin": '*',
-        // "X-CSRF-Token": CSRFToken(document.cookie),
-        mode: 'cors',
-      }
-    }).then((r) => {
+    fetch(url+"/me", getConfig())
+    .then((r) => {
       
       if (r.ok) {
         r.json().then((user) => setUser(user));

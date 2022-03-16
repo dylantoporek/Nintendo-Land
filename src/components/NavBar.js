@@ -3,17 +3,13 @@ import { NavLink } from "react-router-dom";
 import home from './pages/home.png'
 import signout from './pages/signout.png'
 import url from '../url';
+import { deleteConfig } from "../CSRFToken";
 
 function NavBar({setUser}) {
 
     function handleLogoutClick() {
-        fetch(url+"/logout", {
-          method: "DELETE", 
-          headers: {
-            "Access-Control-Allow-Origin": '*',
-            mode: 'cors',
-          }
-        }).then((r) => {
+        fetch(url+"/logout", deleteConfig())
+        .then((r) => {
           if (r.ok) {
             setUser(null);
           }
