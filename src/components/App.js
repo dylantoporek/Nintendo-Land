@@ -20,7 +20,7 @@ function App() {
     fetch(url+"/me", {
       headers: {
         "Access-Control-Allow-Origin": '*',
-        "X-CSRF-Token": CSRFToken(document.cookie),
+        // "X-CSRF-Token": CSRFToken(document.cookie),
         mode: 'cors',
       }
     }).then((r) => {

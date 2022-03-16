@@ -50,7 +50,7 @@ function GameForm({setGame}){
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRF-Token": CSRFToken(document.cookie),
+                // "X-CSRF-Token": CSRFToken(document.cookie),
                 "Access-Control-Allow-Origin": '*',
                 mode: 'cors',
             },
