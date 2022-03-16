@@ -15,7 +15,7 @@ function LoginForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(url+"/login" {
+    fetch(url+"/login", {
       method: "POST",
       credentials: "include",
       headers: {
