@@ -4,7 +4,8 @@ import userlabel from './pages/username.png'
 import passwordlabel from './pages/password.png'
 import loginlabel from './pages/login.png'
 import url from "../url";
-import { postConfig } from "../CSRFToken";
+import getCSRFToken, { postConfig } from "../CSRFToken";
+
 
 
 function LoginForm({ onLogin }) {
@@ -14,8 +15,15 @@ function LoginForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(url+"/login", postConfig({username, password}))
-    .then((r) => {
+    fetch(url+"/login" {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": getCSRFToken(), 
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       } else {
