@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import home from './pages/home.png'
 import signout from './pages/signout.png'
-import url from '../url';
-import { deleteConfig } from "../CSRFToken";
+
+
 
 function NavBar({setUser}) {
 
     function handleLogoutClick() {
-        fetch(url+"/logout", deleteConfig())
+        fetch("/api/v1/logout")
         .then((r) => {
           if (r.ok) {
             setUser(null);

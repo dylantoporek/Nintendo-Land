@@ -19,8 +19,7 @@ import place2 from '../pages/place2.png'
 import place3 from '../pages/place3.png'
 import place4 from '../pages/place4.png'
 import win from '../pages/wins.png'
-import url from '../../url';
-import { patchConfig } from "../../CSRFToken";
+
 
 function Game({game}){
 
@@ -64,8 +63,13 @@ function Game({game}){
 
     // PATCH FETCH FOR GAMES
     function handleSave(){
-        fetch(url+`/games/${game.id}`, patchConfig({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position}))
-        .then(r => {
+        fetch(`/api/v1/games/${game.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({player_position: player.position, cpu1_position: cpu1.position, cpu2_position: cpu2.position, cpu3_position: cpu3.position})
+        }).then(r => {
             if(r.ok){
                 r.json().then( data=> alert('Game saved!'))
             } else{

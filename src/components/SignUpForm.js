@@ -3,8 +3,8 @@ import userlabel from './pages/username.png'
 import passwordlabel from './pages/password.png'
 import passwordconflabel from './pages/passwordconfirmation.png'
 import signuplabel from './pages/signup.png'
-import url from '../url';
-import { postConfig } from "../CSRFToken";
+
+
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -16,12 +16,21 @@ function SignUpForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch("/signup", postConfig({username, password, passwordConfirmation}))
-    .then((r) => {
+    fetch("/api/v1/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        passwordConfirmation
+      }),
+    }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => onLogin(user)).catch((err) => console.log(err));
+        r.json().then((user) => onLogin(user));
       } else {
-        r.json().then((err) => setErrors(err.errors)).catch((err) => console.log(err));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }

@@ -6,8 +6,7 @@ import Game from "./pages/Game";
 import Home from "./pages/Home";
 import GameForm from "./GameForm";
 import LoadForm from "./LoadForm";
-import url from '../url';
-import { getConfig } from "../CSRFToken";
+
 
 
 
@@ -18,7 +17,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch(url+"/me", getConfig())
+    fetch("/api/v1/me")
     .then((r) => {
       
       if (r.ok) {
