@@ -64,11 +64,11 @@ function SignUpForm({ onLogin }) {
         <button id='signup-submit' type="submit">
           <img id='sign-up-label-pic' src={signuplabel}/>
         </button>
-      <div className='errors'>
+      {/* <div className='errors'>
         {errors.map((err) => (
           <p key={err}>{err}</p>
         ))}
-      </div>
+      </div> */}
     </form>
   );
 }

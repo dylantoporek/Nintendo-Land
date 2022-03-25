@@ -68,6 +68,7 @@
   top: 150px;
   text-shadow: none;
   left: -240px;
+  cursor: pointer;
 }
 
 #loginlabel{
@@ -90,6 +91,7 @@
   width: 150px;
   top: 503px;
   left: 40px;
+  cursor: pointer;
 }
 
 #sign-me-up{
@@ -153,6 +155,7 @@ left: 180px;
   top: 60px;
   left: 60px;
   text-shadow: none;
+  cursor: pointer;
 }
 
 #sign-up-label-pic{
@@ -175,6 +178,7 @@ left: 180px;
   width: 150px;
   top: 543px;
   left: -150px;
+  cursor: pointer;
 }
 
 #log-me-in{
@@ -199,6 +203,7 @@ left: 180px;
   width: 200px;
   background-color: white;
   border-color: transparent;
+  cursor: pointer;
 }
 
 #start-button-styler{
@@ -333,6 +338,7 @@ left: -10px;
   max-height: 40px;
   background-color: white;
   border-color: transparent;
+  cursor: pointer;
 }
 
 .load-game-img{
@@ -348,6 +354,7 @@ left: -10px;
   max-height: 40px;
   background-color: white;
   border-color: transparent;
+  cursor: pointer;
 }
 
 .delete-game-img{
@@ -376,6 +383,7 @@ left: -10px;
   /* left: 510px; */
   background-color: white;
   border-color: transparent;
+  cursor: pointer;
 }
 
 #home-new-game-img{
@@ -390,6 +398,7 @@ left: -10px;
   width: 400px;
   background-color: white;
   border-color: transparent;
+  cursor: pointer;
 }
 
 #home-load-game-img{
@@ -400,32 +409,35 @@ left: -10px;
 
 /* NavBar //////////////////////////////////////////////////////////////////////// */
 #nav{
+  position: fixed;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   background-color: white;
   width: 100%;
-  height: 35px;
-  z-index: 1;
+  height: 30px;
+  z-index: 100000000000000;
 }
 
 #link-home{
   position: relative;
-  left: 0%;
+  left: 5%;
   width: 100px;
-  top: 0px;
+  top: 2px;
   z-index: 10000000000000000000000000;
+  cursor: pointer;
 }
 
 #nav-home-icon{
-  max-width: 75%;
-  max-height: 75%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #link-game{
   position: relative;
   left: 20px;
   top: 10px;
-  z-index: 10000000000000000000000000;
+  z-index: 100000000000000000000;
   -webkit-text-fill-color: black;
   text-decoration: none;
   font-weight: bold;
@@ -433,18 +445,20 @@ left: -10px;
 
 #sign-out-button{
   position: relative;
-  background-color: white;
   border-color: transparent;
-  left: 80%;
-  right: 10%;
+  left: 76%;
+
   top: 0px;
   width: 100px;
   z-index: 10000000000000000000000000000;
+  cursor: pointer;
+  
 }
 
 #sign-out-styler{
-  max-height: 170%;
-  max-width: 170%;
+
+  max-height: 175%;
+  max-width: 175%;
 }
 /* GAME BOARD / AVATAR ////////////////////////////////////////////////////////////*/
 
@@ -474,7 +488,7 @@ left: -10px;
   max-height: 80px;
   max-width: 80px;
   position: absolute;
-  z-index: 1000;
+  z-index: 10000000;
   top: 555px;
   left: 1220px;
 }
@@ -489,6 +503,7 @@ left: -10px;
   left: 670px;
   width: 100px;
   height: 30px;
+  cursor: pointer;
 }
 
 #save-game-img{
