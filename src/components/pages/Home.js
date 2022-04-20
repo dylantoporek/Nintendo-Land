@@ -13,8 +13,19 @@ function Home(){
     function handleLClick(){
         navigate('/load-game')
     }
+
     return(
         <div id='home-container'>
+            <div id='instructions'>
+                <h4>Instructions:</h4>
+                <div>
+                    <li>Start a new game, or load an existing file</li>
+                    <li>Roll the dice once, which shows your roll, the cpu's get a random roll generated for them</li>
+                    <li>Any unique effects that occur will happen after the last cpu moves</li>
+                    <li>Click through any alerts, then it is the next turn</li>
+                </div>
+                
+            </div>
             <button id='home-new-game-button' onClick={handleNGClick}>
                 <img id='home-new-game-img' src={newgame}/>
             </button>

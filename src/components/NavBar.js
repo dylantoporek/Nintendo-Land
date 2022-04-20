@@ -1,17 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import home from './pages/home.png'
 import signout from './pages/signout.png'
 
 
 
 function NavBar({setUser}) {
-
+  const navigate = useNavigate()
     function handleLogoutClick() {
-        fetch("/api/v1/logout")
+        fetch("/api/v1/logout", { method: "DELETE" })
         .then((r) => {
           if (r.ok) {
             setUser(null);
+            navigate('/')
           }
         });
       }

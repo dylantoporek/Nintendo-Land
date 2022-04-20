@@ -376,9 +376,17 @@ left: -10px;
   justify-content: center;
 }
 
+#instructions{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50px;
+}
 #home-new-game-button{
   position: absolute;
-  top: 200px;
+  top: 300px;
   width: 400px;
   /* left: 510px; */
   background-color: white;
@@ -393,7 +401,7 @@ left: -10px;
 
 #home-load-game-button{
   position: absolute;
-  top: 380px;
+  top: 480px;
   /* left: 510px; */
   width: 400px;
   background-color: white;
@@ -411,7 +419,6 @@ left: -10px;
 #nav{
   position: fixed;
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   background-color: white;
   width: 100%;
@@ -421,9 +428,10 @@ left: -10px;
 
 #link-home{
   position: relative;
+  align-self: flex-start;
   left: 5%;
   width: 100px;
-  top: 2px;
+  top: 3px;
   z-index: 10000000000000000000000000;
   cursor: pointer;
 }
@@ -447,8 +455,7 @@ left: -10px;
   position: relative;
   border-color: transparent;
   left: 76%;
-
-  top: 0px;
+  top: 3px;
   width: 100px;
   z-index: 10000000000000000000000000000;
   cursor: pointer;
@@ -457,8 +464,8 @@ left: -10px;
 
 #sign-out-styler{
 
-  max-height: 175%;
-  max-width: 175%;
+  max-height: 150%;
+  max-width: 150%;
 }
 /* GAME BOARD / AVATAR ////////////////////////////////////////////////////////////*/
 
