@@ -553,7 +553,9 @@ function Game({game}){
 
     const winnerDisplay = whoWon.map((person)=> {
         if (person.name === 'player'){
-            return <div id='winner' key='winner'>
+            return <div id='winner' key='winner' style={{
+                transition: 'all .5s ease',
+            }}>
             <img className='winner-label'src={playerlabel}/>
             <img id='winner-avatar' src={person.avatar} />
             <img id='win' src={win}/>
@@ -584,7 +586,9 @@ function Game({game}){
     })
 
     const assignPositions = activePlayers.map((player)=>{
-        return <div key={player.name} className={`space-${player.name}-${player.position}`}>
+        return <div key={player.name} className={`space-${player.name}-${player.position}`} style={{
+            transition: 'all 1.5s ease',
+        }}>
                 <img className="avatar" src={player.avatar}/>
         </div>
     })
